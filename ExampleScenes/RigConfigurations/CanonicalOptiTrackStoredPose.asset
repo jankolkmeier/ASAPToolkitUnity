@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e07b7103a32c476c9e292c6847e9403, type: 3}
+  m_Name: CanonicalOptiTrackStoredPose
+  m_EditorClassIdentifier: 
+  pose:
+  - src_bone: CanonicalOptiTrack
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 0, z: 0}
+  - src_bone: M1_Hips
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 0.875, z: 0}
+  - src_bone: M1_LeftUpLeg
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.100155726, y: 0, z: 0}
+  - src_bone: M1_LeftLeg
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: -0.45814532, z: 0}
+  - src_bone: M1_LeftFoot
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.00061284006, y: -0.38720232, z: 0.00020164251}
+  - src_bone: M1_LeftToeBase
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: -0.06510122, z: 0.1502336}
+  - src_bone: M1_RightUpLeg
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.100155726, y: 0, z: 0}
+  - src_bone: M1_RightLeg
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: -0.45814532, z: 0}
+  - src_bone: M1_RightFoot
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.0015111417, y: -0.38798407, z: 0.0008352101}
+  - src_bone: M1_RightToeBase
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: -0.06510122, z: 0.1502336}
+  - src_bone: M1_Spine
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: 0.08212769, z: 0}
+  - src_bone: M1_Spine1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.00000010058284, y: 0.2699709, z: 0.0000022649765}
+  - src_bone: M1_LeftShoulder
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.039191373, y: 0.21517044, z: -0.0020747632}
+  - src_bone: M1_LeftArm
+    rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+    position: {x: -0.14797123, y: 0, z: 0}
+  - src_bone: M1_LeftForeArm
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.3197149, y: 0, z: 0}
+  - src_bone: M1_LeftHand
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.2388105, y: -0.0012053847, z: -0.001270445}
+  - src_bone: M1_LeftHandIndex1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.09014015, y: 0, z: 0.035054505}
+  - src_bone: M1_LeftHandIndex2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.050077863, y: 0, z: 0}
+  - src_bone: M1_LeftHandIndex3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.025038932, y: 0, z: 0}
+  - src_bone: M1_LeftHandMiddle1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.09014015, y: 0, z: 0.011618063}
+  - src_bone: M1_LeftHandMiddle2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.055085648, y: 0, z: 0}
+  - src_bone: M1_LeftHandMiddle3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.030046714, y: 0, z: 0}
+  - src_bone: M1_LeftHandPinky1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.08012458, y: 0, z: -0.035054505}
+  - src_bone: M1_LeftHandPinky2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.04006229, y: 0, z: 0}
+  - src_bone: M1_LeftHandPinky3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.020031145, y: 0, z: 0}
+  - src_bone: M1_LeftHandRing1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.08513237, y: 0, z: -0.011618063}
+  - src_bone: M1_LeftHandRing2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.050077863, y: 0, z: 0}
+  - src_bone: M1_LeftHandRing3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.025038932, y: 0, z: 0}
+  - src_bone: M1_LeftHandThumb1
+    rotation: {x: -0, y: 0.38268366, z: -0, w: 0.9238795}
+    position: {x: -0.015023357, y: -0.025038932, z: 0.050077863}
+  - src_bone: M1_LeftHandThumb2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.030046714, y: 0, z: 0}
+  - src_bone: M1_LeftHandThumb3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0.030046714, y: 0, z: 0}
+  - src_bone: M1_Neck
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: -0, y: 0.26393107, z: 0}
+  - src_bone: M1_Head
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.00000023469329, y: 0.13773489, z: 0.017772198}
+  - src_bone: M1_RightShoulder
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.03966442, y: 0.21517044, z: -0.0020747632}
+  - src_bone: M1_RightArm
+    rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+    position: {x: 0.14797123, y: 0, z: 0}
+  - src_bone: M1_RightForeArm
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.3197149, y: 0, z: 0}
+  - src_bone: M1_RightHand
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.2388105, y: 0.0027759075, z: 0.0029353201}
+  - src_bone: M1_RightHandIndex1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.09014015, y: 0, z: 0.035054505}
+  - src_bone: M1_RightHandIndex2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.050077863, y: 0, z: 0}
+  - src_bone: M1_RightHandIndex3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.025038932, y: 0, z: 0}
+  - src_bone: M1_RightHandMiddle1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.09014015, y: 0, z: 0.011618063}
+  - src_bone: M1_RightHandMiddle2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.055085648, y: 0, z: 0}
+  - src_bone: M1_RightHandMiddle3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.030046714, y: 0, z: 0}
+  - src_bone: M1_RightHandPinky1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.08012458, y: 0, z: -0.035054505}
+  - src_bone: M1_RightHandPinky2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.04006229, y: 0, z: 0}
+  - src_bone: M1_RightHandPinky3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.020031145, y: 0, z: 0}
+  - src_bone: M1_RightHandRing1
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.08513237, y: 0, z: -0.011618063}
+  - src_bone: M1_RightHandRing2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.050077863, y: 0, z: 0}
+  - src_bone: M1_RightHandRing3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.025038932, y: 0, z: 0}
+  - src_bone: M1_RightHandThumb1
+    rotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+    position: {x: 0.015023357, y: -0.025038932, z: 0.050077863}
+  - src_bone: M1_RightHandThumb2
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.030046714, y: 0, z: 0}
+  - src_bone: M1_RightHandThumb3
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0.030046714, y: 0, z: 0}

@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c51a86a7b884329bb4aa868bd4e6ce, type: 3}
+  m_Name: o3nMale_unifiedBoneMapping
+  m_EditorClassIdentifier: 
+  mappings:
+  - src_bone: Hips
+    hanim_bone: 0
+  - src_bone: LowerBack
+    hanim_bone: 14
+  - src_bone: Spine
+    hanim_bone: 21
+  - src_bone: Spine1
+    hanim_bone: 30
+  - src_bone: Clavicle_L
+    hanim_bone: 46
+  - src_bone: Upperarm_L
+    hanim_bone: 48
+  - src_bone: Lowerarm_L
+    hanim_bone: 49
+  - src_bone: hand_L
+    hanim_bone: 50
+  - src_bone: carpal_000_L
+    hanim_bone: 55
+  - src_bone: index_001_L
+    hanim_bone: 56
+  - src_bone: index_002_L
+    hanim_bone: 57
+  - src_bone: index_003_L
+    hanim_bone: 58
+  - src_bone: carpal_001_L
+    hanim_bone: 60
+  - src_bone: middle_001_L
+    hanim_bone: 61
+  - src_bone: middle_002_L
+    hanim_bone: 62
+  - src_bone: middle_003_L
+    hanim_bone: 63
+  - src_bone: carpal_002_L
+    hanim_bone: 65
+  - src_bone: ring_001_L
+    hanim_bone: 66
+  - src_bone: ring_002_L
+    hanim_bone: 67
+  - src_bone: ring_003_L
+    hanim_bone: 68
+  - src_bone: carpal_003_L
+    hanim_bone: 70
+  - src_bone: pinky_001_L
+    hanim_bone: 71
+  - src_bone: pinky_002_L
+    hanim_bone: 72
+  - src_bone: pinky_003_L
+    hanim_bone: 73
+  - src_bone: thumb_001_L
+    hanim_bone: 51
+  - src_bone: thumb_002_L
+    hanim_bone: 52
+  - src_bone: thumb_003_L
+    hanim_bone: 53
+  - src_bone: Clavicle_R
+    hanim_bone: 75
+  - src_bone: Upperarm_R
+    hanim_bone: 77
+  - src_bone: Lowerarm_R
+    hanim_bone: 78
+  - src_bone: hand_R
+    hanim_bone: 79
+  - src_bone: carpal_000_R
+    hanim_bone: 84
+  - src_bone: index_001_R
+    hanim_bone: 85
+  - src_bone: index_002_R
+    hanim_bone: 86
+  - src_bone: index_003_R
+    hanim_bone: 87
+  - src_bone: carpal_001_R
+    hanim_bone: 89
+  - src_bone: middle_001_R
+    hanim_bone: 90
+  - src_bone: middle_002_R
+    hanim_bone: 91
+  - src_bone: middle_003_R
+    hanim_bone: 92
+  - src_bone: carpal_002_R
+    hanim_bone: 94
+  - src_bone: ring_001_R
+    hanim_bone: 95
+  - src_bone: ring_002_R
+    hanim_bone: 96
+  - src_bone: ring_003_R
+    hanim_bone: 97
+  - src_bone: carpal_003_R
+    hanim_bone: 99
+  - src_bone: pinky_001_R
+    hanim_bone: 100
+  - src_bone: pinky_002_R
+    hanim_bone: 101
+  - src_bone: pinky_003_R
+    hanim_bone: 102
+  - src_bone: thumb_001_R
+    hanim_bone: 80
+  - src_bone: thumb_002_R
+    hanim_bone: 81
+  - src_bone: thumb_003_R
+    hanim_bone: 82
+  - src_bone: Neck
+    hanim_bone: 34
+  - src_bone: Head
+    hanim_bone: 38
+  - src_bone: EyeSocket_L
+    hanim_bone: 115
+  - src_bone: Eye_L
+    hanim_bone: 41
+  - src_bone: EyeSocket_R
+    hanim_bone: 115
+  - src_bone: Eye_R
+    hanim_bone: 42
+  - src_bone: Mandible
+    hanim_bone: 115
+  - src_bone: Thigh_L
+    hanim_bone: 2
+  - src_bone: Calf_L
+    hanim_bone: 3
+  - src_bone: Foot_L
+    hanim_bone: 4
+  - src_bone: Toes_L
+    hanim_bone: 7
+  - src_bone: Toe01_001_L
+    hanim_bone: 115
+  - src_bone: Toe01_002_L
+    hanim_bone: 115
+  - src_bone: Toe02_001_L
+    hanim_bone: 115
+  - src_bone: Toe02_002_L
+    hanim_bone: 115
+  - src_bone: Toe03_001_L
+    hanim_bone: 115
+  - src_bone: Toe03_002_L
+    hanim_bone: 115
+  - src_bone: Toe04_001_L
+    hanim_bone: 115
+  - src_bone: Toe04_002_L
+    hanim_bone: 115
+  - src_bone: Toe05_001_L
+    hanim_bone: 115
+  - src_bone: Toe05_02_L
+    hanim_bone: 115
+  - src_bone: Thigh_R
+    hanim_bone: 8
+  - src_bone: Calf_R
+    hanim_bone: 9
+  - src_bone: Foot_R
+    hanim_bone: 10
+  - src_bone: Toes_R
+    hanim_bone: 13
+  - src_bone: Toe01_001_R
+    hanim_bone: 115
+  - src_bone: Toe01_002_R
+    hanim_bone: 115
+  - src_bone: Toe02_001_R
+    hanim_bone: 115
+  - src_bone: Toe02_002_R
+    hanim_bone: 115
+  - src_bone: Toe03_001_R
+    hanim_bone: 115
+  - src_bone: Toe03_002_R
+    hanim_bone: 115
+  - src_bone: Toe04_001_R
+    hanim_bone: 115
+  - src_bone: Toe04_002_R
+    hanim_bone: 115
+  - src_bone: Toe05_001_R
+    hanim_bone: 115
+  - src_bone: Toe05_02_R
+    hanim_bone: 115
+  extraBones:
+  - hanim_bone: 113
+    parent_src_bone: Toes_L
+    localPosition: {x: -0.025, y: 0, z: 0}
+  - hanim_bone: 114
+    parent_src_bone: Toes_R
+    localPosition: {x: -0.025, y: 0, z: 0}
+  - hanim_bone: 38
+    parent_src_bone: Head
+    localPosition: {x: -0.2, y: 0, z: 0}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9448878e2e40f1a4c9f8fd2b56832b13, type: 3}
+  m_Name: o3nMaleAvatar
+  m_EditorClassIdentifier: 
+  recipeType: Standard
+  DisplayValue: 
+  compatibleRaces: []
+  wardrobeRecipeThumbs: []
+  wardrobeSlot: None
+  Hides: []
+  suppressWardrobeSlots: []
+  activeWardrobeSet:
+  - slot: Chest
+    recipe: o3n_male_shirt_01_recipe
+  - slot: Legs
+    recipe: o3n_male_jeans_01_recipe
+  - slot: UnderwearLegs
+    recipe: o3n_male_socks_01_high_Recipe
+  - slot: Eyebrows
+    recipe: o3n_male_eyebrow_01_recipe
+  - slot: Hair
+    recipe: o3n_male_hair_02_Recipe
+  - slot: Feet
+    recipe: o3n_male_shoes_01_black_Recipe
+  - slot: HeadVariant
+    recipe: o3n_male_head_high_Recipe
+  - slot: OverClothing
+    recipe: o3n_male_hoodie_01_blue_Recipe
+  MeshHideAssets: []
+  recipeString: '{"version":3,"packedSlotDataList":[],"slotsV2":[],"slotsV3":[{"id":"o3n_male_eyelash_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_eyelash_overlay","colorIdx":2,"rect":[0,0,0,0]}]},{"id":"o3n_male_eyes_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_eye_overlay","colorIdx":7,"rect":[0,0,0,0]},{"id":"o3nDefaultEyeAdjust","colorIdx":1,"rect":[0,0,0,0]}]},{"id":"o3n_male_hands_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_body_overlay","colorIdx":0,"rect":[0,0,0,0]},{"id":"o3n_male_body_afro_skin_Overlay","colorIdx":3,"rect":[0,0,0,0]},{"id":"o3n_male_socks_01_overlay","colorIdx":5,"rect":[0,0,0,0]},{"id":"o3n_male_jeans_01_overlay","colorIdx":6,"rect":[0,0,0,0]},{"id":"o3n_male_hoodie_alpha_mask_overlay","colorIdx":8,"rect":[0,0,0,0]}]},{"id":"o3n_male_legs_LOD1","scale":100,"copyIdx":2,"overlays":[]},{"id":"o3n_male_torso_LOD1","scale":100,"copyIdx":2,"overlays":[]},{"id":"o3n_male_innermouth_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_innermouth_overlay","colorIdx":7,"rect":[0,0,0,0]}]},{"id":"","scale":1,"copyIdx":-1,"overlays":[]},{"id":"","scale":1,"copyIdx":-1,"overlays":[]},{"id":"o3n_male_head_high","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_head_overlay","colorIdx":0,"rect":[0,0,0,0]},{"id":"o3n_male_face_afro_skin_Overlay","colorIdx":3,"rect":[0,0,0,0]},{"id":"o3n_male_main_cap_overlay","colorIdx":4,"rect":[0,0,0,0]},{"id":"o3n_male_eyebrow_01_overlay","colorIdx":4,"rect":[768,516,512,128]}]},{"id":"o3n_male_hair_02_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_hair_02_Overlay","colorIdx":4,"rect":[0,0,0,0]}]},{"id":"o3n_male_feet_toeless_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_socks_01_overlay","colorIdx":5,"rect":[0,0,0,0]}]},{"id":"o3n_male_shoes_01_LOD1","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_shoes_01_black_Overlay","colorIdx":7,"rect":[0,0,0,0]}]},{"id":"o3n_male_hoodie_01_LOD0","scale":100,"copyIdx":-1,"overlays":[{"id":"o3n_male_hoodie_01_blue_Overlay","colorIdx":7,"rect":[0,0,0,0]}]}],"colors":[],"fColors":[{"name":"Skin","colors":[232,222,217,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"Eyes","colors":[55,140,105,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"Eyelash","colors":[0,0,0,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"SkinDark","colors":[255,255,255,0,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"Hair","colors":[90,55,36,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"SocksColor01","colors":[161,161,161,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"ClothingBottom01","colors":[97,97,97,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"-","colors":[255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]},{"name":"-","colors":[255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0,255,255,255,255,0,0,0,0]}],"sharedColorCount":7,"race":"o3n
+    Male","packedDna":[{"dnaType":"DynamicUMADna","dnaTypeHash":1582214061,"packedDna":"{\"bDnaAsset\":{\"instanceID\":14844},\"bDnaAssetName\":\"o3nMaleDNAConverterBehaviourDNAAsset\",\"bDnaSettings\":[{\"name\":\"gluteusWidth\",\"value\":99},{\"name\":\"child\",\"value\":134},{\"name\":\"neckHeight\",\"value\":123},{\"name\":\"upperMuscle\",\"value\":76},{\"name\":\"lowerMuscle\",\"value\":104},{\"name\":\"upperWeight\",\"value\":67},{\"name\":\"lowerWeight\",\"value\":114},{\"name\":\"noseBridge\",\"value\":128},{\"name\":\"noseWidth\",\"value\":128},{\"name\":\"noseSize\",\"value\":128},{\"name\":\"nosePronounced\",\"value\":128},{\"name\":\"nosePosition\",\"value\":128},{\"name\":\"noseInclination\",\"value\":128},{\"name\":\"noseFlatten\",\"value\":128},{\"name\":\"noseCurve\",\"value\":128},{\"name\":\"eyeSquint\",\"value\":128},{\"name\":\"mouthPosition\",\"value\":144},{\"name\":\"mouthPronounced\",\"value\":128},{\"name\":\"mouthSize\",\"value\":128},{\"name\":\"mandibleSize\",\"value\":128},{\"name\":\"lowCheek\",\"value\":128},{\"name\":\"lowCheekPosition\",\"value\":128},{\"name\":\"lipsSize\",\"value\":128},{\"name\":\"jawsSize\",\"value\":128},{\"name\":\"jawsPosition\",\"value\":128},{\"name\":\"headWidth\",\"value\":128},{\"name\":\"headSize\",\"value\":128},{\"name\":\"foreheadSize\",\"value\":128},{\"name\":\"foreheadPosition\",\"value\":128},{\"name\":\"eyeSize\",\"value\":138},{\"name\":\"eyeRotation\",\"value\":128},{\"name\":\"eyePosition\",\"value\":128},{\"name\":\"eyeDistance\",\"value\":128},{\"name\":\"eyeDepth\",\"value\":128},{\"name\":\"earsSize\",\"value\":128},{\"name\":\"earsRotation\",\"value\":128},{\"name\":\"earsPosition\",\"value\":128},{\"name\":\"chinPronounced\",\"value\":128},{\"name\":\"chinSize\",\"value\":128},{\"name\":\"chinPosition\",\"value\":128},{\"name\":\"cheekSize\",\"value\":128},{\"name\":\"cheekPosition\",\"value\":128},{\"name\":\"waist\",\"value\":62},{\"name\":\"neckThickness\",\"value\":83},{\"name\":\"legSize\",\"value\":126},{\"name\":\"legSeparation\",\"value\":124},{\"name\":\"height\",\"value\":128},{\"name\":\"handsSize\",\"value\":126},{\"name\":\"gluteusSize\",\"value\":61},{\"name\":\"forearmWidth\",\"value\":128},{\"name\":\"forearmLength\",\"value\":128},{\"name\":\"feetSize\",\"value\":108},{\"name\":\"breastSize\",\"value\":62},{\"name\":\"belly\",\"value\":90},{\"name\":\"armWidth\",\"value\":128},{\"name\":\"armLength\",\"value\":128}]}"},{"dnaType":"DynamicUMADna","dnaTypeHash":2010450325,"packedDna":"{\"bDnaAsset\":{\"instanceID\":11694},\"bDnaAssetName\":\"o3n_male_shoes_01_dnaDNAAsset\",\"bDnaSettings\":[]}"}],"wardrobeSet":[{"slot":"Chest","recipe":"o3n_male_shirt_01_recipe"},{"slot":"Legs","recipe":"o3n_male_jeans_01_recipe"},{"slot":"UnderwearLegs","recipe":"o3n_male_socks_01_high_Recipe"},{"slot":"Eyebrows","recipe":"o3n_male_eyebrow_01_recipe"},{"slot":"Hair","recipe":"o3n_male_hair_02_Recipe"},{"slot":"Feet","recipe":"o3n_male_shoes_01_black_Recipe"},{"slot":"HeadVariant","recipe":"o3n_male_head_high_Recipe"},{"slot":"OverClothing","recipe":"o3n_male_hoodie_01_blue_Recipe"}],"packedRecipeType":"Standard"}'

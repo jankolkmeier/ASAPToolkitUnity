@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c877d6ca4f24ec19015284effeb01d, type: 3}
+  m_Name: DIS_V_ER
+  m_EditorClassIdentifier: 
+  bonePoseSettings:
+  - poseName: jawOpen_Close
+    poseValue: 0.15
+  - poseName: mouthUp_Down
+    poseValue: 0.26
+  - poseName: tongueOut
+    poseValue: 0.17
+  - poseName: tongueUp_Down
+    poseValue: 0.53
+  - poseName: leftMouthSmile_Frown
+    poseValue: 0.33
+  - poseName: rightMouthSmile_Frown
+    poseValue: 0.33
+  - poseName: leftLowerLipUp_Down
+    poseValue: 0.01
+  - poseName: rightLowerLipUp_Down
+    poseValue: 0.06
+  - poseName: leftUpperLipUp_Down
+    poseValue: 0.17
+  - poseName: rightUpperLipUp_Down
+    poseValue: 0.23

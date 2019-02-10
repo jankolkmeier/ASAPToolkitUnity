@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecf7189086864fb292f879ff8b92c85, type: 3}
+  m_Name: ExampleMocapDatasetPreprocessorSettings
+  m_EditorClassIdentifier: 
+  defaultAnimationEvents:
+  - event_name: start
+    relative_time: 0
+  - event_name: ready
+    relative_time: 0.1
+  - event_name: strokeStart
+    relative_time: 0.25
+  - event_name: stroke
+    relative_time: 0.5
+  - event_name: strokeEnd
+    relative_time: 0.75
+  - event_name: relax
+    relative_time: 0.9
+  - event_name: end
+    relative_time: 1
+  defaultAvatar: {fileID: 9000000, guid: d39ac6ae1aed34fd2b9c80abd704521c, type: 3}
+  rotationError: 0.1
+  positionError: 0.1
+  scaleError: 0.5
+  importMaterials: 0
+  outputFolder: Assets/ASAPToolkitUnity/ExampleScenes/ExampleMocapDataset/output

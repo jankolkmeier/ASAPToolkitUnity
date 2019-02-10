@@ -1,0 +1,457 @@
+fileFormatVersion: 2
+guid: d39ac6ae1aed34fd2b9c80abd704521c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: M1_Head
+    100004: M1_Hips
+    100006: M1_LeftArm
+    100008: M1_LeftFoot
+    100010: M1_LeftForeArm
+    100012: M1_LeftHand
+    100014: M1_LeftHandIndex1
+    100016: M1_LeftHandIndex2
+    100018: M1_LeftHandIndex3
+    100020: M1_LeftHandMiddle1
+    100022: M1_LeftHandMiddle2
+    100024: M1_LeftHandMiddle3
+    100026: M1_LeftHandPinky1
+    100028: M1_LeftHandPinky2
+    100030: M1_LeftHandPinky3
+    100032: M1_LeftHandRing1
+    100034: M1_LeftHandRing2
+    100036: M1_LeftHandRing3
+    100038: M1_LeftHandThumb1
+    100040: M1_LeftHandThumb2
+    100042: M1_LeftHandThumb3
+    100044: M1_LeftLeg
+    100046: M1_LeftShoulder
+    100048: M1_LeftToeBase
+    100050: M1_LeftUpLeg
+    100052: M1_Neck
+    100054: M1_RightArm
+    100056: M1_RightFoot
+    100058: M1_RightForeArm
+    100060: M1_RightHand
+    100062: M1_RightHandIndex1
+    100064: M1_RightHandIndex2
+    100066: M1_RightHandIndex3
+    100068: M1_RightHandMiddle1
+    100070: M1_RightHandMiddle2
+    100072: M1_RightHandMiddle3
+    100074: M1_RightHandPinky1
+    100076: M1_RightHandPinky2
+    100078: M1_RightHandPinky3
+    100080: M1_RightHandRing1
+    100082: M1_RightHandRing2
+    100084: M1_RightHandRing3
+    100086: M1_RightHandThumb1
+    100088: M1_RightHandThumb2
+    100090: M1_RightHandThumb3
+    100092: M1_RightLeg
+    100094: M1_RightShoulder
+    100096: M1_RightToeBase
+    100098: M1_RightUpLeg
+    100100: M1_Spine
+    100102: M1_Spine1
+    400000: //RootNode
+    400002: M1_Head
+    400004: M1_Hips
+    400006: M1_LeftArm
+    400008: M1_LeftFoot
+    400010: M1_LeftForeArm
+    400012: M1_LeftHand
+    400014: M1_LeftHandIndex1
+    400016: M1_LeftHandIndex2
+    400018: M1_LeftHandIndex3
+    400020: M1_LeftHandMiddle1
+    400022: M1_LeftHandMiddle2
+    400024: M1_LeftHandMiddle3
+    400026: M1_LeftHandPinky1
+    400028: M1_LeftHandPinky2
+    400030: M1_LeftHandPinky3
+    400032: M1_LeftHandRing1
+    400034: M1_LeftHandRing2
+    400036: M1_LeftHandRing3
+    400038: M1_LeftHandThumb1
+    400040: M1_LeftHandThumb2
+    400042: M1_LeftHandThumb3
+    400044: M1_LeftLeg
+    400046: M1_LeftShoulder
+    400048: M1_LeftToeBase
+    400050: M1_LeftUpLeg
+    400052: M1_Neck
+    400054: M1_RightArm
+    400056: M1_RightFoot
+    400058: M1_RightForeArm
+    400060: M1_RightHand
+    400062: M1_RightHandIndex1
+    400064: M1_RightHandIndex2
+    400066: M1_RightHandIndex3
+    400068: M1_RightHandMiddle1
+    400070: M1_RightHandMiddle2
+    400072: M1_RightHandMiddle3
+    400074: M1_RightHandPinky1
+    400076: M1_RightHandPinky2
+    400078: M1_RightHandPinky3
+    400080: M1_RightHandRing1
+    400082: M1_RightHandRing2
+    400084: M1_RightHandRing3
+    400086: M1_RightHandThumb1
+    400088: M1_RightHandThumb2
+    400090: M1_RightHandThumb3
+    400092: M1_RightLeg
+    400094: M1_RightShoulder
+    400096: M1_RightToeBase
+    400098: M1_RightUpLeg
+    400100: M1_Spine
+    400102: M1_Spine1
+    7400000: r_think_l_1
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.1
+    animationPositionError: 0.1
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: p_pre_int_r_2_cm(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_Hips
+      parentName: p_pre_int_r_2_cm(Clone)
+      position: {x: 0, y: 0.92, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftUpLeg
+      parentName: M1_Hips
+      position: {x: -0.100155726, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftLeg
+      parentName: M1_LeftUpLeg
+      position: {x: -0, y: -0.45814532, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftFoot
+      parentName: M1_LeftLeg
+      position: {x: 0.00061284006, y: -0.38720232, z: 0.00020164251}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftToeBase
+      parentName: M1_LeftFoot
+      position: {x: -0, y: -0.06510122, z: 0.1502336}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightUpLeg
+      parentName: M1_Hips
+      position: {x: 0.100155726, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightLeg
+      parentName: M1_RightUpLeg
+      position: {x: -0, y: -0.45814532, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightFoot
+      parentName: M1_RightLeg
+      position: {x: -0.0015111417, y: -0.38798407, z: 0.0008352101}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightToeBase
+      parentName: M1_RightFoot
+      position: {x: -0, y: -0.06510122, z: 0.1502336}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_Spine
+      parentName: M1_Hips
+      position: {x: -0, y: 0.08212769, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_Spine1
+      parentName: M1_Spine
+      position: {x: 0.00000010058284, y: 0.2699709, z: 0.0000022649765}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftShoulder
+      parentName: M1_Spine1
+      position: {x: -0.039191373, y: 0.21517044, z: -0.0020747632}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftArm
+      parentName: M1_LeftShoulder
+      position: {x: -0.14797123, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftForeArm
+      parentName: M1_LeftArm
+      position: {x: -0.3197149, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHand
+      parentName: M1_LeftForeArm
+      position: {x: -0.2388105, y: -0.0012053847, z: -0.001270445}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandIndex1
+      parentName: M1_LeftHand
+      position: {x: -0.09014015, y: 0, z: 0.035054505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandIndex2
+      parentName: M1_LeftHandIndex1
+      position: {x: -0.050077863, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandIndex3
+      parentName: M1_LeftHandIndex2
+      position: {x: -0.025038932, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandMiddle1
+      parentName: M1_LeftHand
+      position: {x: -0.09014015, y: 0, z: 0.011618063}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandMiddle2
+      parentName: M1_LeftHandMiddle1
+      position: {x: -0.055085648, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandMiddle3
+      parentName: M1_LeftHandMiddle2
+      position: {x: -0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandPinky1
+      parentName: M1_LeftHand
+      position: {x: -0.08012458, y: 0, z: -0.035054505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandPinky2
+      parentName: M1_LeftHandPinky1
+      position: {x: -0.04006229, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandPinky3
+      parentName: M1_LeftHandPinky2
+      position: {x: -0.020031145, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandRing1
+      parentName: M1_LeftHand
+      position: {x: -0.08513237, y: 0, z: -0.011618063}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandRing2
+      parentName: M1_LeftHandRing1
+      position: {x: -0.050077863, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandRing3
+      parentName: M1_LeftHandRing2
+      position: {x: -0.025038932, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandThumb1
+      parentName: M1_LeftHand
+      position: {x: -0.015023357, y: -0.025038932, z: 0.050077863}
+      rotation: {x: -0, y: 0.4999996, z: -0, w: 0.8660256}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandThumb2
+      parentName: M1_LeftHandThumb1
+      position: {x: -0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_LeftHandThumb3
+      parentName: M1_LeftHandThumb2
+      position: {x: -0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_Neck
+      parentName: M1_Spine1
+      position: {x: -0, y: 0.26393107, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_Head
+      parentName: M1_Neck
+      position: {x: 0.00000023469329, y: 0.13773489, z: 0.017772198}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightShoulder
+      parentName: M1_Spine1
+      position: {x: 0.03966442, y: 0.21517044, z: -0.0020747632}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightArm
+      parentName: M1_RightShoulder
+      position: {x: 0.14797123, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightForeArm
+      parentName: M1_RightArm
+      position: {x: 0.3197149, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHand
+      parentName: M1_RightForeArm
+      position: {x: 0.19488107, y: 0.0027759075, z: 0.0029353201}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandIndex1
+      parentName: M1_RightHand
+      position: {x: 0.09014015, y: 0, z: 0.035054505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandIndex2
+      parentName: M1_RightHandIndex1
+      position: {x: 0.050077863, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandIndex3
+      parentName: M1_RightHandIndex2
+      position: {x: 0.025038932, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandMiddle1
+      parentName: M1_RightHand
+      position: {x: 0.09014015, y: 0, z: 0.011618063}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandMiddle2
+      parentName: M1_RightHandMiddle1
+      position: {x: 0.055085648, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandMiddle3
+      parentName: M1_RightHandMiddle2
+      position: {x: 0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandPinky1
+      parentName: M1_RightHand
+      position: {x: 0.08012458, y: 0, z: -0.035054505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandPinky2
+      parentName: M1_RightHandPinky1
+      position: {x: 0.04006229, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandPinky3
+      parentName: M1_RightHandPinky2
+      position: {x: 0.020031145, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandRing1
+      parentName: M1_RightHand
+      position: {x: 0.08513237, y: 0, z: -0.011618063}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandRing2
+      parentName: M1_RightHandRing1
+      position: {x: 0.050077863, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandRing3
+      parentName: M1_RightHandRing2
+      position: {x: 0.025038932, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0.21956448, w: 0.97559804}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandThumb1
+      parentName: M1_RightHand
+      position: {x: 0.015023357, y: -0.025038932, z: 0.050077863}
+      rotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandThumb2
+      parentName: M1_RightHandThumb1
+      position: {x: 0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: M1_RightHandThumb3
+      parentName: M1_RightHandThumb2
+      position: {x: 0.030046714, y: 0, z: 0}
+      rotation: {x: 0, y: 0.032996576, z: -0, w: 0.99945545}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: M1_Hips
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
