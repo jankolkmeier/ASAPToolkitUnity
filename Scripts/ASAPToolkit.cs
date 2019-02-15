@@ -67,6 +67,8 @@ namespace ASAPToolkit.Unity {
         public int nFaceTargets;
         public BoneTranslation[] boneTranslations;
         public BoneLocalRotation[] boneValues;
+        public Vector3[] boneTranslationsParsed;
+        public Quaternion[] boneRotationsParsed;
         public float[] faceTargetValues;
 
         //
@@ -107,6 +109,10 @@ namespace ASAPToolkit.Unity {
             t = new float[] { x, y, z };
         }
 
+        public Vector3 VectorConverted() {
+            return new Vector3(-t[0], t[1], t[2]);
+        }
+
         // For debugging purpose, to simulate input from ASAP
         // Yes, we inveret the unity cos just so it can get inverted again in the pipeline
         public BoneTranslation(Transform transform) {
@@ -120,6 +126,10 @@ namespace ASAPToolkit.Unity {
     [System.Serializable]
     public class BoneLocalRotation {
         public float[] r;
+
+        public Quaternion QuaternionConverted() {
+            return new Quaternion(-r[0], r[1], r[2], -r[3]);
+        }
 
         public BoneLocalRotation(BinaryReader br) {
             //float x = br.ReadSingle();
@@ -149,7 +159,7 @@ namespace ASAPToolkit.Unity {
     }
 
     public interface ICharacterSkeleton {
-        VJoint[] GenerateVJoints();
+        VJoint[] GenerateVJoints(Transform rootTranslation);
         void ApplyPose(Quaternion[] poses, Vector3[] rootTransforms);
         bool Ready();
     }

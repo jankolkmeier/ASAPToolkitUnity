@@ -26,7 +26,10 @@ namespace ASAPToolkit.Unity.Characters.UMA {
         }
 
         public override bool Ready() {
-            return uma_initialized;
+            if (uma_initialized && !base.Ready()) {
+                Init();
+            }
+            return uma_initialized && base.Ready();
         }
 
     }

@@ -3,9 +3,7 @@
 using UnityEngine;
 using UMA;
 using UMA.PoseTools;
-using System.Collections;
 using System.Collections.Generic;
-using static UMA.PoseTools.ExpressionPlayer;
 
 namespace ASAPToolkit.Unity.Characters.UMA  {
 
@@ -80,34 +78,39 @@ namespace ASAPToolkit.Unity.Characters.UMA  {
             }
 
             // Fix for animation systems which require consistent values frame to frame
-            Quaternion headRotation = umaData.skeleton.GetRotation(headHash);
-            Quaternion neckRotation = umaData.skeleton.GetRotation(neckHash);
+            try { 
+                Quaternion headRotation = umaData.skeleton.GetRotation(headHash);
+                Quaternion neckRotation = umaData.skeleton.GetRotation(neckHash);
+                // Need to reset bones here if we want Mecanim animation
+                expressionSet.RestoreBones(umaData.skeleton, false);
 
-            // Need to reset bones here if we want Mecanim animation
-            expressionSet.RestoreBones(umaData.skeleton, false);
+                if (!overrideMecanimNeck)
+                    umaData.skeleton.SetRotation(neckHash, neckRotation);
+                if (!overrideMecanimHead)
+                    umaData.skeleton.SetRotation(headHash, headRotation);
+            } catch (System.Exception) {
+                initialized = false;
+                return;
+            }
 
-            if (!overrideMecanimNeck)
-                umaData.skeleton.SetRotation(neckHash, neckRotation);
-            if (!overrideMecanimHead)
-                umaData.skeleton.SetRotation(headHash, headRotation);
         }
 
         void LateUpdate() {
             if (!initialized) return;
-            MecanimJoint mecanimMask = MecanimJoint.None;
+            ExpressionPlayer.MecanimJoint mecanimMask = ExpressionPlayer.MecanimJoint.None;
             if (!overrideMecanimNeck)
-                mecanimMask |= MecanimJoint.Neck;
+                mecanimMask |= ExpressionPlayer.MecanimJoint.Neck;
             if (!overrideMecanimHead)
-                mecanimMask |= MecanimJoint.Head;
+                mecanimMask |= ExpressionPlayer.MecanimJoint.Head;
             if (!overrideMecanimJaw)
-                mecanimMask |= MecanimJoint.Jaw;
+                mecanimMask |= ExpressionPlayer.MecanimJoint.Jaw;
             if (!overrideMecanimEyes)
-                mecanimMask |= MecanimJoint.Eye;
+                mecanimMask |= ExpressionPlayer.MecanimJoint.Eye;
             if (overrideMecanimJaw)
                 umaData.skeleton.Restore(jawHash);
 
             for (int i = 0; i < values.Length; i++) {
-                if (Mathf.Approximately(values[i], 0f) || (MecanimAlternate[i] & mecanimMask) != MecanimJoint.None)
+                if (Mathf.Approximately(values[i], 0f) || (ExpressionPlayer.MecanimAlternate[i] & mecanimMask) != ExpressionPlayer.MecanimJoint.None)
                     continue;
                 if (expressionSet.posePairs[i].inverse == null) 
                      values[i] = Mathf.Clamp(values[i],    0f, 1.0f);

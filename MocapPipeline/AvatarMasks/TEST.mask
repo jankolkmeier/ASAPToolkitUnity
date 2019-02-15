@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: TEST
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: HumanoidRoot
+    m_Weight: 1
+  - m_Path: HumanoidRoot/vl5
+    m_Weight: 1
+  - m_Path: HumanoidRoot/vl5/l_hip
+    m_Weight: 1
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee/l_ankle
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee/l_ankle/l_subtalar
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee/l_ankle/l_subtalar/l_midtarsal
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee/l_ankle/l_subtalar/l_midtarsal/l_metatarsal
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/l_hip/l_knee/l_ankle/l_subtalar/l_midtarsal/l_metatarsal/l_forefoot_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip
+    m_Weight: 1
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee/r_ankle
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee/r_ankle/r_subtalar
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee/r_ankle/r_subtalar/r_midtarsal
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee/r_ankle/r_subtalar/r_midtarsal/r_metatarsal
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/r_hip/r_knee/r_ankle/r_subtalar/r_midtarsal/r_metatarsal/r_forefoot_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10
+    m_Weight: 1
+  - m_Path: HumanoidRoot/vl5/vt10/vt6
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_index1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_index1/l_index2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_index1/l_index2/l_index3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_index1/l_index2/l_index3/l_index_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_middle1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_middle1/l_middle2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_middle1/l_middle2/l_middle3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_middle1/l_middle2/l_middle3/l_middle_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_pinky1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2/l_pinky3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2/l_pinky3/l_pinky_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_ring1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2/l_ring3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2/l_ring3/l_ring_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_thumb1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_thumb1/l_thumb2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_thumb1/l_thumb2/l_thumb3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/l_sternoclavicular/l_shoulder/l_elbow/l_wrist/l_thumb1/l_thumb2/l_thumb3/l_thumb_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_index1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_index1/r_index2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_index1/r_index2/r_index3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_index1/r_index2/r_index3/r_index_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_middle1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_middle1/r_middle2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_middle1/r_middle2/r_middle3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_middle1/r_middle2/r_middle3/r_middle_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_pinky1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2/r_pinky3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2/r_pinky3/r_pinky_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_ring1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2/r_ring3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2/r_ring3/r_ring_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_thumb1
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_thumb1/r_thumb2
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_thumb1/r_thumb2/r_thumb3
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/r_sternoclavicular/r_shoulder/r_elbow/r_wrist/r_thumb1/r_thumb2/r_thumb3/r_thumb_distal_tip
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4/skullbase
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4/skullbase/l_eyeball_joint
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4/skullbase/r_eyeball_joint
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4/skullbase/skulltop
+    m_Weight: 0
+  - m_Path: HumanoidRoot/vl5/vt10/vt6/vt1/vc4/skullbase/temporomandibular
+    m_Weight: 0

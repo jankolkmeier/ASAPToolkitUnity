@@ -26,17 +26,13 @@ namespace ASAPToolkit.Unity.Retargeting {
             Transform[] bones = CanonicalRepresentation.Bones(root);
             foreach (Transform bone in bones) {
                 StoredPose sp = pose.FirstOrDefault(p => p.src_bone == bone.name);
-                if (sp == null) {
-                    if (bone == root) {
-                        sp = pose[0];
-                    } else continue;
-                }
+                if (sp == null) continue;
                 if (bone.parent == null) {
                     bone.rotation = sp.rotation;
-                    if (bone == root) bone.position = sp.position;
+                    //if (bone == root) bone.position =   sp.position;
                 } else {
                     bone.localRotation = sp.rotation;
-                    if (bone == root) bone.localPosition = sp.position;
+                    //if (bone == root) bone.localPosition = sp.position;
                 }
             }
             return _save;

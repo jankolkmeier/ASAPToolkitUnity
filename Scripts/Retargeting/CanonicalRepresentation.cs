@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace ASAPToolkit.Unity.Retargeting {
 
@@ -251,13 +252,31 @@ namespace ASAPToolkit.Unity.Retargeting {
             return RG * qInit_i * localRotation * RG_i;
         }
 
-        public Quaternion FromCanonical(Quaternion canonicalRotation) {
-            return qInit * RG_i * canonicalRotation * RG;
+        public Vector3 ToCanonicalTranslation() {
+            //Quaternion rotationC = ToCanonical(localBone.localRotation);
+            Vector3 world = localBone.parent.TransformPoint(localBone.position);
+            Vector3 canonicalOffset = world - localBone.parent.position;
+            return //ToCanonical() *
+                canonicalOffset;
+        }
+
+        public void ApplyFromCanonical(Vector3 canonicalTranslation) {
+            //Debug.Log("Hello World "+canonicalTranslation.x +" "+canonicalTranslation.y+ " "+canonicalTranslation.z);
+            localBone.position = canonicalTranslation;// localBone.parent.InverseTransformPoint(canonicalTranslation - );
+            //Debug.Log("Hello World " + localBone.position.x + " " + localBone.position.y + " " + localBone.position.z);
+            // localBone.localRotation *
+            //canonicalTranslation;
         }
 
         public void ApplyFromCanonical(Quaternion canonicalRotation) {
             localBone.localRotation = FromCanonical(canonicalRotation);
         }
+
+
+        public Quaternion FromCanonical(Quaternion canonicalRotation) {
+            return qInit * RG_i * canonicalRotation * RG;
+        }
+
 
         // Requires bone to be aligned with canonical bone
         public void MapCOS(Transform bone) {
@@ -276,11 +295,17 @@ namespace ASAPToolkit.Unity.Retargeting {
         public Transform localBone;
         public CanonicalRepresentation.HAnimBones canonicalBoneName;
         public CanonicalCOSMapping canonicalCOSMapping;
+        public LocalToCanonical parent;
 
         public LocalToCanonical(Transform localBone, CanonicalRepresentation.HAnimBones canonicalBoneName) {
             this.localBone = localBone;
             this.canonicalBoneName = canonicalBoneName;
             this.canonicalCOSMapping = new CanonicalCOSMapping(localBone);
+            this.parent = null;
+        }
+
+        public void LinkParent(LocalToCanonical parent) {
+            this.parent = parent;
         }
     }
 
@@ -289,13 +314,13 @@ namespace ASAPToolkit.Unity.Retargeting {
         public CanonicalRepresentation.HAnimBones[] canonicalBoneNames;
         public CanonicalRepresentation.HAnimBones rootTranslationBone;
         public Quaternion[] bonePoses;
-        public Vector3 rootTransform;
+        public Vector3[] boneTranslations;
         public float timestamp;
 
         public CanonicalSkeletonPose(LocalToCanonical[] ltc, float t, CanonicalRepresentation.HAnimBones rootTranslationBone) {
             this.canonicalBoneNames = new CanonicalRepresentation.HAnimBones[ltc.Length];
             this.bonePoses = new Quaternion[ltc.Length];
-            this.rootTransform = Vector3.zero;
+            this.boneTranslations = new Vector3[ltc.Length];
             this.timestamp = t;
             this.rootTranslationBone = rootTranslationBone;
             for (int i = 0; i < ltc.Length; i++) {
@@ -312,11 +337,20 @@ namespace ASAPToolkit.Unity.Retargeting {
                 if (this.canonicalBoneNames[i] == CanonicalRepresentation.HAnimBones.NONE)
                     continue;
                 this.bonePoses[i] = ltc[i].canonicalCOSMapping.ToCanonical();
-
                 //if (this.canonicalBoneNames[i] == CanonicalMapping.HAnimBones.HumanoidRoot) {
+                if (ltc[i].localBone.parent != null)
+                    //ltc[i].localBone.localPosition
+                    //ltc[i].canonicalCOSMapping.
+                    //this.boneTranslations[i] = ltc[i].localBone.parent.TransformPoint(ltc[i].localBone.position);
+                    this.boneTranslations[i] = ltc[i].canonicalCOSMapping.ToCanonicalTranslation();
+                else
+                    this.boneTranslations[i] = ltc[i].localBone.position;
+                /*
                 if (this.canonicalBoneNames[i] == rootTranslationBone) {
-                    this.rootTransform = ltc[i].localBone.position - ltc[i].localBone.parent.position;
-                }
+
+                } else {
+                    this.boneTranslations[i] = ltc[i].localBone.position - ltc[i].localBone.parent.position;
+                }*/
             }
         }
 

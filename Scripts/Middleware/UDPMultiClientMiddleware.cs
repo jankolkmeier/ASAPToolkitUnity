@@ -18,8 +18,8 @@ using System.Net;
 using System.Net.Sockets;
 #endif
 
-namespace ASAPToolkit.Unity.Middleware {
 
+namespace ASAPToolkit.Unity.Middleware {
     public class UDPMultiClientMiddleware : MiddlewareBase {
         public string _remoteIP = "127.0.0.1";
         public int _dataPort = 6652;
@@ -55,16 +55,48 @@ namespace ASAPToolkit.Unity.Middleware {
 #endif
         }
 
-        public void OnapplicationQuit() {
+        public void OnApplicationQuit() {
             _running = false;
+            _listening = false;
             send_MRSTE.Set();
             send_MRSTE.Reset();
 
-#if !UNITY_EDITOR && UNITY_METRO
-#else
             _sendTask.Join(500);
             _listenTask.Join(500);
             _heartbeatTask.Join(500);
+
+            try {
+                _sendTask.Abort();
+            } catch (Exception) {
+                Debug.Log("_sendTask.Abort failed");
+                //throw;
+            }
+            try {
+                _listenTask.Abort();
+            } catch (Exception) {
+                Debug.Log("_listenTask.Abort failed");
+                //throw;
+            }
+            try {
+                _heartbeatTask.Abort();
+            } catch (Exception) {
+                Debug.Log("_heartbeatTask.Abort failed");
+                //throw;
+            }
+            try {
+                udpClient.Close();
+            } catch (Exception) {
+                Debug.Log("udpClient.Close failed");
+                //throw;
+            }
+
+            Debug.Log("exit of UDPMultiClientMiddleware");
+
+#if !UNITY_EDITOR && UNITY_METRO
+#else
+            //_sendTask.Join(500);
+            //_listenTask.Join(500);
+            //_heartbeatTask.Join(500);
 #endif
         }
 
@@ -225,5 +257,4 @@ namespace ASAPToolkit.Unity.Middleware {
 #endif
 
     }
-
 }

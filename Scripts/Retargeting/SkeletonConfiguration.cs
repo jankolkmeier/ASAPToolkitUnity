@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using static ASAPToolkit.Unity.Retargeting.CanonicalRepresentation;
+using ASAPToolkit.Unity.Retargeting;
 
 namespace ASAPToolkit.Unity.Retargeting {
 
@@ -19,7 +19,7 @@ namespace ASAPToolkit.Unity.Retargeting {
         private StoredPoseAsset aPose;
 
         public Transform rootBone;
-        public HAnimBones rootTranslationBone = HAnimBones.vl5;
+        public CanonicalRepresentation.HAnimBones rootTranslationBone = CanonicalRepresentation.HAnimBones.vl5;
 
         private bool initialized = false;
 
@@ -78,8 +78,8 @@ namespace ASAPToolkit.Unity.Retargeting {
 
             ltc = _ltc.ToArray();
             lastPose = new CanonicalSkeletonPose(ltc, 0, rootTranslationBone);
+            Debug.Log("Initialzed PoseProvider: " + transform.name + " (" + ltc.Length + " mapped bones)");
             initialized = true;
-            //Debug.Log("Initialzed PoseProvider: " + transform.name + " (" + ltc.Length + " mapped bones)");
             // TODO: store (assumed) t/a-pose?
         }
 
@@ -87,24 +87,24 @@ namespace ASAPToolkit.Unity.Retargeting {
             return initialized;
         }
 
-        public HAnimBones BoneNameMapped(string boneName) {
+        public CanonicalRepresentation.HAnimBones BoneNameMapped(string boneName) {
             try {
                 return boneMapping.mappings.First(m => m.src_bone == boneName).hanim_bone;
             } catch { }
-            return HAnimBones.NONE;
+            return CanonicalRepresentation.HAnimBones.NONE;
         }
 
-        public VJoint[] GenerateVJoints() {
+        public VJoint[] GenerateVJoints(Transform rootTranslation) {
             Init();
             if (ltc == null || ltc.Length < 1) return null;
             VJoint[] res = new VJoint[ltc.Length];
             Dictionary<string, VJoint> lut = new Dictionary<string, VJoint>();
-
+            Transform rootBone = ltc.First(m => m.canonicalBoneName == rootTranslationBone).localBone;
             for (int b = 0; b < ltc.Length; b++) {
                 Transform bone = ltc[b].localBone;
                 VJoint parent = null;
 
-                if (b == 0 && ltc[b].canonicalBoneName != HAnimBones.HumanoidRoot) {
+                if (b == 0 && ltc[b].canonicalBoneName != CanonicalRepresentation.HAnimBones.HumanoidRoot) {
                     Debug.LogError("First bone in boneMapping needs to be HumanoidRoot");
                     return null;
                 }
@@ -123,12 +123,18 @@ namespace ASAPToolkit.Unity.Retargeting {
                 if (ltc[b].canonicalBoneName == rootTranslationBone && b > 0) {
                     position = Vector3.zero;
                     res[0].position = bone.position - res[0].position;
-                } else if (b > 0) {
-                    position = Quaternion.Inverse(Quaternion.identity) * (bone.position - bone.parent.position);
                 }
 
+                /* else if (b > 0) {
+                    position = Quaternion.Inverse(Quaternion.identity) * (bone.position - bone.parent.position);
+                }*/
+
+                if (rootTranslation != null) {
+                    rot = ltc[b].canonicalCOSMapping.ToCanonical();
+                    position = (position- rootBone.position) + rootTranslation.position;
+                }
                 string hAnimName = "";
-                if (ltc[b].canonicalBoneName != HAnimBones.NONE) {
+                if (ltc[b].canonicalBoneName != CanonicalRepresentation.HAnimBones.NONE) {
                     hAnimName = ltc[b].canonicalBoneName.ToString();
                 }
                 res[b] = new VJoint(bone.name, hAnimName, position, rot, parent);
@@ -177,14 +183,19 @@ namespace ASAPToolkit.Unity.Retargeting {
         public void ApplyPose(CanonicalSkeletonPose pose, float scaleRootPosition) {
             if (ltc == null || pose.canonicalBoneNames == null) return;
             for (int i = 0; i < pose.canonicalBoneNames.Length; i++) {
-                HAnimBones bone = pose.canonicalBoneNames[i];
-                if (bone == HAnimBones.NONE) continue;
+                CanonicalRepresentation.HAnimBones bone = pose.canonicalBoneNames[i];
+                if (bone == CanonicalRepresentation.HAnimBones.NONE) continue;
                 LocalToCanonical map = ltc.FirstOrDefault(m => m.canonicalBoneName == bone);
                 if (map != null) {
                     map.canonicalCOSMapping.ApplyFromCanonical(pose.bonePoses[i]);
                     if (map.canonicalBoneName == rootTranslationBone) {
-                        map.localBone.localPosition = map.localBone.parent.InverseTransformPoint(map.localBone.parent.position + pose.rootTransform);
-                        map.localBone.position = map.localBone.localPosition * scaleRootPosition;
+                        //map.localBone.localPosition = map.localBone.parent.InverseTransformPoint(map.localBone.parent.position + pose.boneTranslations[i]);
+                        // find appropriate root translation bone in pose: 
+                        int poseRootTransformIdx = System.Array.IndexOf(pose.canonicalBoneNames, pose.rootTranslationBone);
+                        map.canonicalCOSMapping.ApplyFromCanonical(pose.boneTranslations[poseRootTransformIdx]);
+                        //map.localBone.localPosition = ;
+                        //map.localBone.parent.InverseTransformPoint(map.localBone.parent.position + pose.boneTranslations[poseRootTransformIdx]);
+                        //map.localBone.position = map.localBone.localPosition * scaleRootPosition;
                     }
 
 
@@ -209,11 +220,10 @@ namespace ASAPToolkit.Unity.Retargeting {
             }
 
             for (int i = 0; i < ltc.Length; i++) {
-                HAnimBones bone = ltc[i].canonicalBoneName;
-                if (bone == HAnimBones.NONE) continue;
+                CanonicalRepresentation.HAnimBones bone = ltc[i].canonicalBoneName;
+                if (bone == CanonicalRepresentation.HAnimBones.NONE) continue;
                 ltc[i].canonicalCOSMapping.ApplyFromCanonical(poses[i]);
                 if (bone == rootTranslationBone) {
-                    Debug.Log("HAAA "+ ltc[i].localBone.name);
                     ltc[i].localBone.localPosition = ltc[i].localBone.parent.InverseTransformPoint(ltc[i].localBone.parent.position + rootTransforms[0]);
                     ltc[i].localBone.localPosition = ltc[i].localBone.localPosition * scaleRootPosition;
                 }
@@ -260,9 +270,9 @@ namespace ASAPToolkit.Unity.Retargeting {
         public class ASAPClip {
             public string name;
             public CanonicalSkeletonPose[] frames;
-            public HAnimBones[] bones;
+            public CanonicalRepresentation.HAnimBones[] bones;
 
-            public ASAPClip(string name, CanonicalSkeletonPose[] frames, HAnimBones[] bones) {
+            public ASAPClip(string name, CanonicalSkeletonPose[] frames, CanonicalRepresentation.HAnimBones[] bones) {
                 this.name = name;
                 this.frames = frames;
                 this.bones = bones;

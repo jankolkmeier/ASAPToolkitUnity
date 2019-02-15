@@ -64,7 +64,6 @@ namespace ASAPToolkit.Unity {
         // Maybe parsing/etc. could be done in the communication thread better?
         public void OnMessage(string rawMsg) {
             AsapMessage asapMessage;
-
             try {
                 asapMessage = JsonUtility.FromJson<AsapMessage>(rawMsg);
             } catch (System.Exception e) {
@@ -90,18 +89,24 @@ namespace ASAPToolkit.Unity {
                             agents[asapMessage.agentId].agentState = new AgentState();
                         JsonUtility.FromJsonOverwrite(rawMsg, agents[asapMessage.agentId].agentState);
 
+                        agents[asapMessage.agentId].agentState.boneTranslationsParsed = new Vector3[agents[asapMessage.agentId].agentState.nBones];
+                        agents[asapMessage.agentId].agentState.boneRotationsParsed = new Quaternion[agents[asapMessage.agentId].agentState.nBones];
+
                         if (agents[asapMessage.agentId].agentState.binaryBoneValues.Length > 0) {
                             byte[] binaryMessage = System.Convert.FromBase64String(
                                 agents[asapMessage.agentId].agentState.binaryBoneValues);
-                            agents[asapMessage.agentId].agentState.boneTranslations =
-                                new BoneTranslation[2];
-                            agents[asapMessage.agentId].agentState.boneValues =
-                                new BoneLocalRotation[agents[asapMessage.agentId].agentState.nBones];
                             using (BinaryReader br = new BinaryReader(new MemoryStream(binaryMessage))) {
                                 for (int b = 0; b < agents[asapMessage.agentId].agentState.nBones; b++) {
-                                    if (b < 2) agents[asapMessage.agentId].agentState.boneTranslations[b] = new BoneTranslation(br);
-                                    agents[asapMessage.agentId].agentState.boneValues[b] = new BoneLocalRotation(br);
+                                    agents[asapMessage.agentId].agentState.boneTranslationsParsed[b] = (new BoneTranslation(br)).VectorConverted();
+                                    agents[asapMessage.agentId].agentState.boneRotationsParsed[b] = (new BoneLocalRotation(br)).QuaternionConverted();
                                 }
+                            }
+                        } else {
+                            for (int b = 0; b < agents[asapMessage.agentId].agentState.nBones; b++) {
+                                if (agents[asapMessage.agentId].agentState.boneTranslations.Length > b) 
+                                    agents[asapMessage.agentId].agentState.boneTranslationsParsed[b] = agents[asapMessage.agentId].agentState.boneTranslations[b].VectorConverted();
+                                if (agents[asapMessage.agentId].agentState.boneValues.Length > b)
+                                    agents[asapMessage.agentId].agentState.boneRotationsParsed[b] = agents[asapMessage.agentId].agentState.boneValues[b].QuaternionConverted();
                             }
                         }
 

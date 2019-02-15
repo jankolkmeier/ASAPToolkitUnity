@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090421c4796874a0ca3ab6c367b11028, type: 3}
+  m_Name: MURMLTest
+  m_EditorClassIdentifier: 
+  bmls:
+  - "<bml characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \ id=\"bml1\" > \r\n<gazeShift id=\"g1\" target=\"camera\" start=\"0\" end=\"1\"
+    influence=\"NECK\" />\n</bml>"
+  - "<bml characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \ id=\"bml2\" > \r\n<gazeShift id=\"g1\" target=\"f1\" start=\"bml1:g1:end+2\"
+    end=\"bml1:g1:end+3\" influence=\"NECK\" />\n</bml>"
