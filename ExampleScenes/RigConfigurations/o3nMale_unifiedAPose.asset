@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: o3nMale_unifiedAPose
   m_EditorClassIdentifier: 
   pose:
+  - src_bone: Position
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 0, z: 0}
   - src_bone: Hips
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -0.8533976, y: 0.00000006581728, z: 0.00827139}

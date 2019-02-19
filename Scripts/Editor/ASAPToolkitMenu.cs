@@ -60,35 +60,40 @@ namespace ASAPToolkit.Unity.Editor {
             //w.Register();
         }
 
+/*
         [MenuItem("ASAP/Animation Exporter Window")]
         static void Init() {
             AnimationExporterWindow w = EditorWindow.GetWindow<AnimationExporterWindow>(false, "ASAP Animation Exporter", true);
             w.Show();
         }
+ */
 
 
         [MenuItem("ASAP/Create BoneMap")]
         public static void CreateBoneMapping() {
             string name = "New";
             BoneMapAsset bm = ScriptableObject.CreateInstance<BoneMapAsset>();
-            SkeletonConfiguration cpp = Selection.activeGameObject.transform.GetComponent<SkeletonConfiguration>();
-            if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInChildren<SkeletonConfiguration>();
-            if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInParent<SkeletonConfiguration>();
-            if (cpp != null) {
-                name = cpp.transform.name;
-                Transform[] bones = null;
-                if (cpp.rootBone != null)
-                     bones = CanonicalRepresentation.Bones(cpp.rootBone);
-                else bones = CanonicalRepresentation.Bones(cpp.transform);
+            //SkeletonConfiguration cpp = Selection.activeGameObject.transform.GetComponent<SkeletonConfiguration>();
+            Transform root = Selection.activeGameObject.transform;
+
+            //if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInChildren<SkeletonConfiguration>();
+            //if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInParent<SkeletonConfiguration>();
+            //if (cpp != null) {
+                name = root.name;
+                Transform[] bones = CanonicalRepresentation.Bones(root);
+                //if (cpp.rootBone != null)
+                //     bones = CanonicalRepresentation.Bones(cpp.rootBone);
+                //else bones = CanonicalRepresentation.Bones(cpp.transform);
+                bones = CanonicalRepresentation.Bones(root);
 
                 bm.mappings = new BoneMapAsset.HAnimBoneMapping[bones.Length];
                 for (int t = 0; t < bones.Length; t++) {
                     bm.mappings[t].src_bone = bones[t].name;
                     bm.mappings[t].hanim_bone = CanonicalRepresentation.HAnimBones.NONE;
                 }
-            } else {
-                Debug.LogError("Failed to create a BoneMap. Select a SkeletonConfiguration in the hierarchy panel.");
-            }
+            //} else {
+            //    Debug.LogError("Failed to create a BoneMap. Select a SkeletonConfiguration in the hierarchy panel.");
+            //}
 
             AssetDatabase.CreateAsset(bm, "Assets/" + name + "BoneMapping.asset");
             AssetDatabase.SaveAssets();
@@ -101,19 +106,21 @@ namespace ASAPToolkit.Unity.Editor {
 
             string name = "New";
             StoredPoseAsset sp = ScriptableObject.CreateInstance<StoredPoseAsset>();
+            Transform root = Selection.activeGameObject.transform;
 
-            SkeletonConfiguration cpp = Selection.activeGameObject.transform.GetComponent<SkeletonConfiguration>();
-            if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInChildren<SkeletonConfiguration>();
-            if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInParent<SkeletonConfiguration>();
+            //SkeletonConfiguration cpp = Selection.activeGameObject.transform.GetComponent<SkeletonConfiguration>();
+            //if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInChildren<SkeletonConfiguration>();
+            //if (cpp == null) cpp = Selection.activeGameObject.transform.GetComponentInParent<SkeletonConfiguration>();
 
-            if (cpp != null) {
-                name = cpp.transform.name;
-                if (cpp.rootBone != null)
-                     sp.pose = StoredPoseAsset.StorePose(cpp.rootBone);
-                else sp.pose = StoredPoseAsset.StorePose(cpp.transform);
-            } else {
-                Debug.LogError("Failed to create a StoredPose. Select a SkeletonConfiguration in the hierarchy panel.");
-            }
+            //if (cpp != null) {
+                name = root.name;
+                //if (cpp.rootBone != null)
+                //     sp.pose = StoredPoseAsset.StorePose(cpp.rootBone);
+                //else sp.pose = StoredPoseAsset.StorePose(cpp.transform);
+                sp.pose = StoredPoseAsset.StorePose(root);
+            //} else {
+            //    Debug.LogError("Failed to create a StoredPose. Select a SkeletonConfiguration in the hierarchy panel.");
+            //}
 
             AssetDatabase.CreateAsset(sp, "Assets/" + name + "StoredPose.asset");
             AssetDatabase.SaveAssets();

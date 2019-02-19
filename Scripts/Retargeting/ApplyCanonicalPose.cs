@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using ASAPToolkit.Unity.Characters;
+
 namespace ASAPToolkit.Unity.Retargeting {
 
-    [ExecuteInEditMode, RequireComponent(typeof(SkeletonConfiguration))]
+    [RequireComponent(typeof(BasicSkeleton))]
     public class ApplyCanonicalPose : MonoBehaviour {
 
-        // TODO: interface...
-        public SkeletonConfiguration poseSource;
+        public BasicSkeleton poseSource;
+        private BasicSkeleton poseTarget;
         public float scaleRoot = 1.0f;
-        private SkeletonConfiguration poseTarget;
-
 
         void Start() {
-            poseTarget = GetComponent<SkeletonConfiguration>();
+            poseTarget = GetComponent<BasicSkeleton>();
         }
 
         void LateUpdate() {
-            if (poseSource != null) {
-                SkeletonConfiguration.ASAPClip ac = poseSource.ExportPose();
-                if (ac != null && ac.frames.Length == 1) {
-                    poseTarget.ApplyPose(ac.frames[0], scaleRoot);
+            if (poseSource.Ready() && poseTarget.Ready()) {
+                if (poseSource != null) {
+                    CanonicalPose pose = poseSource.ExportPose();
+                    if (pose != null) {
+                        poseTarget.ApplyPose(pose);
+                    }
                 }
             }
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using ASAPToolkit.Unity.Retargeting;
 
 namespace ASAPToolkit.Unity {
 
@@ -159,8 +160,10 @@ namespace ASAPToolkit.Unity {
     }
 
     public interface ICharacterSkeleton {
-        VJoint[] GenerateVJoints(Transform rootTranslation);
+        VJoint[] GenerateVJoints();
         void ApplyPose(Quaternion[] poses, Vector3[] rootTransforms);
+        void ApplyPose(CanonicalPose pose);
+        CanonicalPose ExportPose();
         bool Ready();
     }
 

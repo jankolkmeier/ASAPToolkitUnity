@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bmls:
   - "<bml id=\"bml1\" characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
-    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<gazeShift id=\"gs1\" target=\"redsphere\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<gazeShift id=\"gs1\" target=\"bluebox\"
     influence=\"NECK\" start=\"0\" end=\"1\" />\n</bml>"

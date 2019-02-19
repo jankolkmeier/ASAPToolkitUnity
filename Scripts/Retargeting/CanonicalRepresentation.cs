@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
+using ASAPToolkit.Unity.Util;
 
 namespace ASAPToolkit.Unity.Retargeting {
 
@@ -227,147 +229,241 @@ namespace ASAPToolkit.Unity.Retargeting {
         }
     }
 
-
-    public struct CanonicalCOSMapping {
-        private Transform localBone;
+    public class AlignedBone {
+        public Transform bone { get; private set; }
+        public AlignedBone parent { get; private set; }
         private Quaternion qInit;
         private Quaternion qInit_i;
         private Quaternion RG;
         private Quaternion RG_i;
 
-        public CanonicalCOSMapping(Transform localBone) {
-            this.localBone = localBone;
-            this.qInit = Quaternion.identity;
-            this.qInit_i = Quaternion.identity;
-            this.RG = Quaternion.identity;
-            this.RG_i = Quaternion.identity;
-            MapCOS(localBone);
+        private FakeBoneFixer fbf;
+
+        public AlignedBone(Transform bone) {
+            this.bone = bone;
+            fbf = bone.GetComponent<FakeBoneFixer>();
+            this.parent = null;
+            Align();
         }
 
-        public Quaternion ToCanonical() {
-            return ToCanonical(localBone.localRotation);
+        public AlignedBone(Transform bone, AlignedBone parent) {
+            this.bone = bone;
+            this.parent = parent;
+            Align();
         }
 
-        public Quaternion ToCanonical(Quaternion localRotation) {
+        public void Align() {
+            this.qInit = bone.localRotation;
+            this.qInit_i = Quaternion.Inverse(qInit);
+            this.RG = bone.rotation;
+            this.RG_i = Quaternion.Inverse(RG);
+        }
+
+        // Returns the local rotation in canonical space
+        public Quaternion CurrentRotationInCanonical() {
+            if (fbf != null && fbf.fakeChild != null) return RotationToCanonical(fbf.fakeChild.localRotation);
+            if (fbf != null && fbf.fakeParent != null) return Quaternion.identity;
+            return RotationToCanonical(bone.localRotation);
+        }
+
+        public Quaternion RotationToCanonical(Quaternion localRotation) {
             return RG * qInit_i * localRotation * RG_i;
         }
 
-        public Vector3 ToCanonicalTranslation() {
-            //Quaternion rotationC = ToCanonical(localBone.localRotation);
-            Vector3 world = localBone.parent.TransformPoint(localBone.position);
-            Vector3 canonicalOffset = world - localBone.parent.position;
-            return //ToCanonical() *
-                canonicalOffset;
+        public void ApplyRotationFromCanonical(Quaternion canonicalRotation) {
+            if (fbf != null)
+                Debug.LogError("TODO: Applying motion to fake bone not implemented yet. Need to sum up transformations from both source bones.");
+            bone.localRotation = RotationFromCanonical(canonicalRotation);
+
         }
 
-        public void ApplyFromCanonical(Vector3 canonicalTranslation) {
-            //Debug.Log("Hello World "+canonicalTranslation.x +" "+canonicalTranslation.y+ " "+canonicalTranslation.z);
-            localBone.position = canonicalTranslation;// localBone.parent.InverseTransformPoint(canonicalTranslation - );
-            //Debug.Log("Hello World " + localBone.position.x + " " + localBone.position.y + " " + localBone.position.z);
-            // localBone.localRotation *
-            //canonicalTranslation;
-        }
-
-        public void ApplyFromCanonical(Quaternion canonicalRotation) {
-            localBone.localRotation = FromCanonical(canonicalRotation);
-        }
-
-
-        public Quaternion FromCanonical(Quaternion canonicalRotation) {
+        public Quaternion RotationFromCanonical(Quaternion canonicalRotation) {
             return qInit * RG_i * canonicalRotation * RG;
         }
 
+        // Transform point p in local canonical space to the same point in original space
+        public Vector3 TransformPointInCanonical(Vector3 p) {
+            return CurrentRotationInCanonical() * (p - bone.position);
+        }
 
-        // Requires bone to be aligned with canonical bone
-        public void MapCOS(Transform bone) {
-            localBone = bone;
-            qInit = bone.localRotation;
-            qInit_i = Quaternion.Inverse(qInit);
-            RG = bone.rotation;
-            RG_i = Quaternion.Inverse(RG);
+        // Transform point p (local coordinates) to the same point in canonical space
+        public Vector3 TransformPointFromCanonical(Vector3 p) {
+            return bone.position + (CurrentRotationInCanonical() * p);
+        }
+
+        public void LinkParent(AlignedBone parent) {
+            this.parent = parent;
+        }
+
+        public Vector3 CurrentPositionInCanonical() {
+            if (fbf != null && fbf.fakeChild != null && parent == null) return fbf.fakeChild.position;
+            if (fbf != null && fbf.fakeChild != null && parent != null) return parent.TransformPointInCanonical(fbf.fakeChild.position);
+            if (fbf != null && fbf.fakeParent != null) return Vector3.zero;
+            if (parent == null) return bone.position;
+            return parent.TransformPointInCanonical(bone.position);
+        }
+
+        public void ApplyLocalPositionFromCanonical(Vector3 p) {
+            if (fbf != null)
+                Debug.LogError("TODO: Applying motion to fake bone not implemented yet. Need to sum up transformations from both source bones.");
+            if (parent == null) bone.position = p;
+            bone.localPosition = parent.TransformPointFromCanonical(p);
         }
 
         // TODO: Allow custom canonical skeletons
 
     }
 
-    public class LocalToCanonical {
-        public Transform localBone;
+    public class MappedBone : AlignedBone {
         public CanonicalRepresentation.HAnimBones canonicalBoneName;
-        public CanonicalCOSMapping canonicalCOSMapping;
-        public LocalToCanonical parent;
 
-        public LocalToCanonical(Transform localBone, CanonicalRepresentation.HAnimBones canonicalBoneName) {
-            this.localBone = localBone;
+        public MappedBone(Transform bone, CanonicalRepresentation.HAnimBones canonicalBoneName) : base(bone) {
             this.canonicalBoneName = canonicalBoneName;
-            this.canonicalCOSMapping = new CanonicalCOSMapping(localBone);
-            this.parent = null;
-        }
-
-        public void LinkParent(LocalToCanonical parent) {
-            this.parent = parent;
         }
     }
 
-    // Pose of local skeleton in canonical representation
-    public struct CanonicalSkeletonPose {
-        public CanonicalRepresentation.HAnimBones[] canonicalBoneNames;
-        public CanonicalRepresentation.HAnimBones rootTranslationBone;
-        public Quaternion[] bonePoses;
-        public Vector3[] boneTranslations;
-        public float timestamp;
+    public class CanonicalRig {
+        public MappedBone[] boneMap { get; private set; }
+        private CanonicalRepresentation.HAnimBones[] parts;
 
-        public CanonicalSkeletonPose(LocalToCanonical[] ltc, float t, CanonicalRepresentation.HAnimBones rootTranslationBone) {
-            this.canonicalBoneNames = new CanonicalRepresentation.HAnimBones[ltc.Length];
-            this.bonePoses = new Quaternion[ltc.Length];
-            this.boneTranslations = new Vector3[ltc.Length];
-            this.timestamp = t;
-            this.rootTranslationBone = rootTranslationBone;
-            for (int i = 0; i < ltc.Length; i++) {
-                this.canonicalBoneNames[i] = ltc[i].canonicalBoneName;
-            }
-            UpdateCanonicalSkeletonPose(ltc);
-        }
+        private int[] partsMap;
+        private CanonicalPose pose;
 
-        public void UpdateCanonicalSkeletonPose(LocalToCanonical[] ltc) {
-            if (this.bonePoses == null || this.bonePoses.Length != ltc.Length)
-                throw new System.Exception("This mapping is not compatible with CanonicalSkeletonPose");
-
-            for (int i = 0; i < ltc.Length; i++) {
-                if (this.canonicalBoneNames[i] == CanonicalRepresentation.HAnimBones.NONE)
+        public CanonicalRig(Transform root, BoneMapAsset.HAnimBoneMapping[] hanimMap) {
+            List<MappedBone> _boneMap = new List<MappedBone>();
+            for (int i = 0; i < hanimMap.Length; i++) {
+                Transform localBone = root.FindChildRecursive(hanimMap[i].src_bone);
+                if (localBone == null) {
+                    Debug.LogWarning("Couldn't find bone " + hanimMap[i].src_bone + " in " + root.name);
                     continue;
-                this.bonePoses[i] = ltc[i].canonicalCOSMapping.ToCanonical();
-                //if (this.canonicalBoneNames[i] == CanonicalMapping.HAnimBones.HumanoidRoot) {
-                if (ltc[i].localBone.parent != null)
-                    //ltc[i].localBone.localPosition
-                    //ltc[i].canonicalCOSMapping.
-                    //this.boneTranslations[i] = ltc[i].localBone.parent.TransformPoint(ltc[i].localBone.position);
-                    this.boneTranslations[i] = ltc[i].canonicalCOSMapping.ToCanonicalTranslation();
-                else
-                    this.boneTranslations[i] = ltc[i].localBone.position;
-                /*
-                if (this.canonicalBoneNames[i] == rootTranslationBone) {
+                }
+                _boneMap.Add(new MappedBone(localBone, hanimMap[i].hanim_bone));
+            }
+            MappedBone[] res = _boneMap.ToArray();
+            foreach (MappedBone m in res) {
+                if (m.bone.parent == null) continue;
+                MappedBone parent = res.FirstOrDefault(p => p.bone == m.bone.parent);
+                m.LinkParent(parent);
+            }
+            this.boneMap = _boneMap.ToArray();
+            this.pose = new CanonicalPose(this.boneMap, out this.partsMap);
+        }
 
-                } else {
-                    this.boneTranslations[i] = ltc[i].localBone.position - ltc[i].localBone.parent.position;
-                }*/
+        public void UpdatePose() {
+            for (int i = 0; i < partsMap.Length; i++) {
+                if (partsMap[i] < 0) continue;
+                this.pose.UpdateRotation(partsMap[i], boneMap[i].CurrentRotationInCanonical());
+                if (boneMap[i].canonicalBoneName == CanonicalRepresentation.HAnimBones.HumanoidRoot) {
+                    this.pose.UpdateTranslation(boneMap[i].CurrentPositionInCanonical());
+                }
+            }
+        }
+
+
+        public CanonicalPose ExportPose() {
+            return this.pose;
+        }
+
+        public void ApplyPose(CanonicalPose p) {
+            if (boneMap == null || p == null) return;
+            int[] _applyMap = p.GetIdxMap(boneMap);
+            for (int i = 0; i < _applyMap.Length; i++) {
+                if (_applyMap[i] < 0) continue;
+                boneMap[i].ApplyRotationFromCanonical(p.GetRotation(_applyMap[i]));
+                if (boneMap[i].canonicalBoneName == CanonicalRepresentation.HAnimBones.HumanoidRoot) {
+                    boneMap[i].ApplyLocalPositionFromCanonical(p.translation);
+                }
             }
         }
 
     }
+    
+    public class CanonicalPoseSequence {
+        public string name { get; private set; }
+        public CanonicalRig rig { get; private set; }
 
+        private CanonicalPose poseSampler;
+        private int[] partsMap;
 
-    public interface ICanonicalPoseProvider {
-        void ExportPose();
+        private float[] times;
+        private Quaternion[][] rotation_frames;
+        private Vector3[] translation_frames;
+
+        public CanonicalPoseSequence(string name, CanonicalRig rig) {
+            this.name = name;
+            this.rig = rig;
+            this.poseSampler = new CanonicalPose(rig.boneMap, out partsMap);
+        }
+
+        public void AddFrame(float time) {
+            for (int i = 0; i < partsMap.Length; i++) {
+                if (partsMap[i] < 0) continue;
+                this.poseSampler.UpdateRotation(partsMap[i], rig.boneMap[i].CurrentRotationInCanonical());
+                if (rig.boneMap[i].canonicalBoneName == CanonicalRepresentation.HAnimBones.HumanoidRoot) {
+                    this.poseSampler.UpdateTranslation(rig.boneMap[i].CurrentPositionInCanonical());
+                }
+            }
+            // TODO: Copy to frames;
+        }
     }
 
-    public interface ICanonicalPoseClipConverter {
-        void ExportClip(AnimationClip clip);
-        Animator GetAnimator();
-    }
+    public class CanonicalPose {
+        public CanonicalRepresentation.HAnimBones[] parts;
+        public Quaternion[] rotations;
+        public Vector3 translation;
 
-    public interface ICanonicalPoseTarget {
-        void ApplyPose();
+        public CanonicalPose(CanonicalRepresentation.HAnimBones[] all_parts, out int[] idxMap) {
+            this.parts = all_parts.Where(p => p != CanonicalRepresentation.HAnimBones.NONE).ToArray();
+            this.rotations = new Quaternion[this.parts.Length];
+            this.translation = Vector3.zero;
+            idxMap = GetIdxMap(all_parts);
+        }
+
+        public CanonicalPose(MappedBone[] bones, out int[] idxMap) : this(
+            bones.Select(b => b.canonicalBoneName).ToArray(),
+            out idxMap
+        ) {}
+
+        public int[] GetIdxMap(MappedBone[] bones) {
+            return GetIdxMap(bones.Select(b => b.canonicalBoneName).ToArray());
+        }
+
+        public int[] GetIdxMap(CanonicalRepresentation.HAnimBones[] sourceParts) {
+            int[] res = new int[sourceParts.Length];
+            int i = 0;
+            foreach (CanonicalRepresentation.HAnimBones p in sourceParts) {
+                res[i] = Array.IndexOf(this.parts, p);
+                if (p == CanonicalRepresentation.HAnimBones.NONE) res[i] = -1;
+                i++;
+            }
+            return res;
+        }
+
+        public Quaternion GetRotation(int idx) {
+            if (idx < 0 || idx >= rotations.Length) {
+                return Quaternion.identity;
+            }
+            return this.rotations[idx];
+        }
+
+        public Quaternion GetRotation(CanonicalRepresentation.HAnimBones part) {
+            int idx = Array.IndexOf(parts, part);
+            return GetRotation(idx);
+        }
+
+        public void UpdateRotation(CanonicalRepresentation.HAnimBones part, Quaternion q) {
+            int idx = Array.IndexOf(parts, part);
+            UpdateRotation(idx, q);
+        }
+
+        public void UpdateRotation(int idx, Quaternion q) {
+            if (idx < 0 || idx >= rotations.Length) return;
+            this.rotations[idx] = q;
+        }
+
+        public void UpdateTranslation(Vector3 v) {
+            this.translation = v;
+        }
     }
 
 }

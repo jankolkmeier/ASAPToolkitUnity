@@ -11,11 +11,6 @@ namespace ASAPToolkit.Unity.Characters {
         public ICharacterFace face;
         private bool initialized = false;
 
-        public Transform rootBonePose;
-
-        public Transform[] rootDebug;
-
-
         void Awake() {
         }
 
@@ -37,7 +32,7 @@ namespace ASAPToolkit.Unity.Characters {
             if (skeleton != null && !skeleton.Ready()) return;
             // TODO: asap needs some default joints...
             VJoint[] vJoints = new VJoint[0];
-            if (skeleton != null) vJoints = skeleton.GenerateVJoints(rootBonePose);
+            if (skeleton != null) vJoints = skeleton.GenerateVJoints();
 
             IFaceTarget[] faceTargets = new IFaceTarget[0];
             if (face != null) faceTargets = face.GetFaceTargets();

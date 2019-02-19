@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e07b7103a32c476c9e292c6847e9403, type: 3}
+  m_Name: BlueguyEyesStoredPose
+  m_EditorClassIdentifier: 
+  pose:
+  - src_bone: BlueguyEyes
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 0, z: 0}
+  - src_bone: HumanoidRoot
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.94700974, z: -0.007990125}
+  - src_bone: vl5
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: 0, y: 0.052990258, z: -0.086}
+  - src_bone: l_hip
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.096, y: -0.036, z: 0.073}
+  - src_bone: l_thigh_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: l_knee
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.427, z: -0.004}
+  - src_bone: l_calf_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: l_ankle
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.433, z: -0.022}
+  - src_bone: l_midtarsal
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.063, z: 0.109}
+  - src_bone: l_forefoot_tip
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: 0, y: 0, z: 0.085}
+  - src_bone: r_hip
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.096, y: -0.036, z: 0.073}
+  - src_bone: r_thigh_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: r_knee
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.427, z: -0.004}
+  - src_bone: r_calf_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: r_ankle
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.433, z: -0.022}
+  - src_bone: r_midtarsal
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.063, z: 0.109}
+  - src_bone: r_forefoot_tip
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: 0, y: 0, z: 0.085}
+  - src_bone: vt10
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.108, z: 0.02}
+  - src_bone: vl3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.14, z: 0.013}
+  - src_bone: l_acromioclavicular
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: -0.089, y: 0.212, z: 0.029}
+  - src_bone: l_shoulder
+    rotation: {x: -0, y: -0, z: 0.7071073, w: 0.70710635}
+    position: {x: -0.098, y: 0.008, z: 0.006}
+  - src_bone: l_upperarm_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: l_elbow
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.262, y: 0, z: -0.017}
+  - src_bone: l_forearm_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: l_wrist
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.265, y: 0, z: 0.004}
+  - src_bone: l_index1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.1036, y: 0.0025, z: 0.0337}
+  - src_bone: l_index2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0382, y: 0.000399, z: 0.0032}
+  - src_bone: l_index3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.033, y: -0.002599, z: 0.0019}
+  - src_bone: l_middle1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.1055, y: 0.0046, z: 0.0104}
+  - src_bone: l_middle2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0395, y: 0.0001, z: -0.000099}
+  - src_bone: l_middle3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0346, y: -0.0038, z: -0.0003}
+  - src_bone: l_pinky1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.1045, y: -0.005599, z: -0.039}
+  - src_bone: l_pinky2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0297, y: -0.0016, z: -0.002}
+  - src_bone: l_pinky3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0258, y: -0.004799, z: -0.0009}
+  - src_bone: l_ring1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.1052, y: 0.001, z: -0.0151}
+  - src_bone: l_ring2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0347, y: -0.000699, z: -0.0014}
+  - src_bone: l_ring3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0305, y: -0.0039, z: -0.000599}
+  - src_bone: l_thumb1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.014, y: -0.0025, z: 0.0247}
+  - src_bone: l_thumb2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0454, y: -0.0114, z: 0.028}
+  - src_bone: l_thumb3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0.0358, y: -0.0107, z: 0.0132}
+  - src_bone: r_acromioclavicular
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: 0.089, y: 0.212, z: 0.029}
+  - src_bone: r_shoulder
+    rotation: {x: -0, y: -0, z: -0.7071069, w: 0.70710677}
+    position: {x: 0.098, y: 0.008, z: 0.006}
+  - src_bone: r_upperarm_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: r_elbow
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.262, y: 0, z: -0.017}
+  - src_bone: r_forearm_roll
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: r_wrist
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.265, y: 0, z: 0.004}
+  - src_bone: r_index1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.1036, y: 0.0025, z: 0.0337}
+  - src_bone: r_index2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0382, y: 0.000399, z: 0.0032}
+  - src_bone: r_index3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.033, y: -0.002599, z: 0.0019}
+  - src_bone: r_middle1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.1055, y: 0.0046, z: 0.0104}
+  - src_bone: r_middle2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0395, y: 0.0001, z: -0.000099}
+  - src_bone: r_middle3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0346, y: -0.0038, z: -0.0003}
+  - src_bone: r_pinky1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.1045, y: -0.005599, z: -0.039}
+  - src_bone: r_pinky2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0297, y: -0.0016, z: -0.002}
+  - src_bone: r_pinky3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0258, y: -0.004799, z: -0.0009}
+  - src_bone: r_ring1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.1052, y: 0.001, z: -0.0151}
+  - src_bone: r_ring2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0347, y: -0.000699, z: -0.0014}
+  - src_bone: r_ring3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0305, y: -0.0039, z: -0.000599}
+  - src_bone: r_thumb1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.014, y: -0.0025, z: 0.0247}
+  - src_bone: r_thumb2
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0454, y: -0.0114, z: 0.028}
+  - src_bone: r_thumb3
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: 0.0358, y: -0.0107, z: 0.0132}
+  - src_bone: vc4
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.295, z: 0.033}
+  - src_bone: skullbase
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.093, z: 0.027}
+  - src_bone: l_eyeball_joint
+    rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    position: {x: 0.031504, y: 0.043594, z: 0.090436}
+  - src_bone: r_eyeball_joint_PIVOT
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: Sphere03
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.00867, z: 0}
+  - src_bone: Sphere04
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.003293, z: 0}
+  - src_bone: r_eyeball_joint
+    rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    position: {x: -0.036494, y: 0.043594, z: 0.090436}
+  - src_bone: r_eyeball_joint_PIVOT 1
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0, z: 0}
+  - src_bone: Sphere01
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: 0.003293, z: 0}
+  - src_bone: Sphere02
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    position: {x: -0, y: -0.00867, z: 0}
+  - src_bone: skulltop
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    position: {x: 0, y: 0.163, z: 0}

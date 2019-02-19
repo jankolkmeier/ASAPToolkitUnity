@@ -3,9 +3,8 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,6 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mappings:
   - src_bone: CanonicalOptiTrack
+    hanim_bone: 115
+  - src_bone: FakeRoot
     hanim_bone: 0
   - src_bone: M1_Hips
     hanim_bone: 14
@@ -46,35 +47,35 @@ MonoBehaviour:
   - src_bone: M1_LeftHand
     hanim_bone: 50
   - src_bone: M1_LeftHandIndex1
-    hanim_bone: 115
+    hanim_bone: 56
   - src_bone: M1_LeftHandIndex2
-    hanim_bone: 115
+    hanim_bone: 57
   - src_bone: M1_LeftHandIndex3
-    hanim_bone: 115
+    hanim_bone: 58
   - src_bone: M1_LeftHandMiddle1
-    hanim_bone: 115
+    hanim_bone: 61
   - src_bone: M1_LeftHandMiddle2
-    hanim_bone: 115
+    hanim_bone: 62
   - src_bone: M1_LeftHandMiddle3
-    hanim_bone: 115
+    hanim_bone: 63
   - src_bone: M1_LeftHandPinky1
-    hanim_bone: 115
+    hanim_bone: 71
   - src_bone: M1_LeftHandPinky2
-    hanim_bone: 115
+    hanim_bone: 72
   - src_bone: M1_LeftHandPinky3
-    hanim_bone: 115
+    hanim_bone: 73
   - src_bone: M1_LeftHandRing1
-    hanim_bone: 115
+    hanim_bone: 66
   - src_bone: M1_LeftHandRing2
-    hanim_bone: 115
+    hanim_bone: 67
   - src_bone: M1_LeftHandRing3
-    hanim_bone: 115
+    hanim_bone: 68
   - src_bone: M1_LeftHandThumb1
-    hanim_bone: 115
+    hanim_bone: 51
   - src_bone: M1_LeftHandThumb2
-    hanim_bone: 115
+    hanim_bone: 52
   - src_bone: M1_LeftHandThumb3
-    hanim_bone: 115
+    hanim_bone: 53
   - src_bone: M1_Neck
     hanim_bone: 34
   - src_bone: M1_Head
@@ -88,33 +89,33 @@ MonoBehaviour:
   - src_bone: M1_RightHand
     hanim_bone: 79
   - src_bone: M1_RightHandIndex1
-    hanim_bone: 115
+    hanim_bone: 85
   - src_bone: M1_RightHandIndex2
-    hanim_bone: 115
+    hanim_bone: 86
   - src_bone: M1_RightHandIndex3
-    hanim_bone: 115
+    hanim_bone: 87
   - src_bone: M1_RightHandMiddle1
-    hanim_bone: 115
+    hanim_bone: 90
   - src_bone: M1_RightHandMiddle2
-    hanim_bone: 115
+    hanim_bone: 91
   - src_bone: M1_RightHandMiddle3
-    hanim_bone: 115
+    hanim_bone: 92
   - src_bone: M1_RightHandPinky1
-    hanim_bone: 115
+    hanim_bone: 100
   - src_bone: M1_RightHandPinky2
-    hanim_bone: 115
+    hanim_bone: 101
   - src_bone: M1_RightHandPinky3
-    hanim_bone: 115
+    hanim_bone: 102
   - src_bone: M1_RightHandRing1
-    hanim_bone: 115
+    hanim_bone: 95
   - src_bone: M1_RightHandRing2
-    hanim_bone: 115
+    hanim_bone: 96
   - src_bone: M1_RightHandRing3
-    hanim_bone: 115
+    hanim_bone: 97
   - src_bone: M1_RightHandThumb1
-    hanim_bone: 115
+    hanim_bone: 80
   - src_bone: M1_RightHandThumb2
-    hanim_bone: 115
+    hanim_bone: 81
   - src_bone: M1_RightHandThumb3
-    hanim_bone: 115
+    hanim_bone: 82
   extraBones: []

@@ -3,9 +3,8 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,6 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pose:
   - src_bone: CanonicalOptiTrack
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    position: {x: 0, y: 0, z: 0}
+  - src_bone: FakeRoot
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 0, y: 0, z: 0}
   - src_bone: M1_Hips
@@ -98,7 +100,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: -0.025038932, y: 0, z: 0}
   - src_bone: M1_LeftHandThumb1
-    rotation: {x: -0, y: 0.38268366, z: -0, w: 0.9238795}
+    rotation: {x: -0, y: 0, z: -0, w: 1}
     position: {x: -0.015023357, y: -0.025038932, z: 0.050077863}
   - src_bone: M1_LeftHandThumb2
     rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -161,7 +163,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 0.025038932, y: 0, z: 0}
   - src_bone: M1_RightHandThumb1
-    rotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     position: {x: 0.015023357, y: -0.025038932, z: 0.050077863}
   - src_bone: M1_RightHandThumb2
     rotation: {x: 0, y: 0, z: 0, w: 1}

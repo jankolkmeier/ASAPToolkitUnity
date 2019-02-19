@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c51a86a7b884329bb4aa868bd4e6ce, type: 3}
+  m_Name: BlueguyEyesBoneMapping
+  m_EditorClassIdentifier: 
+  mappings:
+  - src_bone: BlueguyEyes
+    hanim_bone: 115
+  - src_bone: HumanoidRoot
+    hanim_bone: 0
+  - src_bone: vl5
+    hanim_bone: 14
+  - src_bone: l_hip
+    hanim_bone: 2
+  - src_bone: l_thigh_roll
+    hanim_bone: 108
+  - src_bone: l_knee
+    hanim_bone: 3
+  - src_bone: l_calf_roll
+    hanim_bone: 109
+  - src_bone: l_ankle
+    hanim_bone: 4
+  - src_bone: l_midtarsal
+    hanim_bone: 7
+  - src_bone: l_forefoot_tip
+    hanim_bone: 113
+  - src_bone: r_hip
+    hanim_bone: 8
+  - src_bone: r_thigh_roll
+    hanim_bone: 110
+  - src_bone: r_knee
+    hanim_bone: 9
+  - src_bone: r_calf_roll
+    hanim_bone: 111
+  - src_bone: r_ankle
+    hanim_bone: 10
+  - src_bone: r_midtarsal
+    hanim_bone: 13
+  - src_bone: r_forefoot_tip
+    hanim_bone: 114
+  - src_bone: vt10
+    hanim_bone: 21
+  - src_bone: vl3
+    hanim_bone: 16
+  - src_bone: l_acromioclavicular
+    hanim_bone: 46
+  - src_bone: l_shoulder
+    hanim_bone: 48
+  - src_bone: l_upperarm_roll
+    hanim_bone: 104
+  - src_bone: l_elbow
+    hanim_bone: 49
+  - src_bone: l_forearm_roll
+    hanim_bone: 105
+  - src_bone: l_wrist
+    hanim_bone: 50
+  - src_bone: l_index1
+    hanim_bone: 56
+  - src_bone: l_index2
+    hanim_bone: 57
+  - src_bone: l_index3
+    hanim_bone: 58
+  - src_bone: l_middle1
+    hanim_bone: 61
+  - src_bone: l_middle2
+    hanim_bone: 62
+  - src_bone: l_middle3
+    hanim_bone: 63
+  - src_bone: l_pinky1
+    hanim_bone: 71
+  - src_bone: l_pinky2
+    hanim_bone: 72
+  - src_bone: l_pinky3
+    hanim_bone: 73
+  - src_bone: l_ring1
+    hanim_bone: 66
+  - src_bone: l_ring2
+    hanim_bone: 67
+  - src_bone: l_ring3
+    hanim_bone: 68
+  - src_bone: l_thumb1
+    hanim_bone: 51
+  - src_bone: l_thumb2
+    hanim_bone: 52
+  - src_bone: l_thumb3
+    hanim_bone: 53
+  - src_bone: r_acromioclavicular
+    hanim_bone: 75
+  - src_bone: r_shoulder
+    hanim_bone: 77
+  - src_bone: r_upperarm_roll
+    hanim_bone: 106
+  - src_bone: r_elbow
+    hanim_bone: 78
+  - src_bone: r_forearm_roll
+    hanim_bone: 107
+  - src_bone: r_wrist
+    hanim_bone: 79
+  - src_bone: r_index1
+    hanim_bone: 85
+  - src_bone: r_index2
+    hanim_bone: 86
+  - src_bone: r_index3
+    hanim_bone: 87
+  - src_bone: r_middle1
+    hanim_bone: 90
+  - src_bone: r_middle2
+    hanim_bone: 91
+  - src_bone: r_middle3
+    hanim_bone: 92
+  - src_bone: r_pinky1
+    hanim_bone: 100
+  - src_bone: r_pinky2
+    hanim_bone: 101
+  - src_bone: r_pinky3
+    hanim_bone: 102
+  - src_bone: r_ring1
+    hanim_bone: 95
+  - src_bone: r_ring2
+    hanim_bone: 96
+  - src_bone: r_ring3
+    hanim_bone: 97
+  - src_bone: r_thumb1
+    hanim_bone: 80
+  - src_bone: r_thumb2
+    hanim_bone: 81
+  - src_bone: r_thumb3
+    hanim_bone: 82
+  - src_bone: vc4
+    hanim_bone: 34
+  - src_bone: skullbase
+    hanim_bone: 38
+  - src_bone: l_eyeball_joint
+    hanim_bone: 41
+  - src_bone: r_eyeball_joint_PIVOT
+    hanim_bone: 115
+  - src_bone: Sphere03
+    hanim_bone: 115
+  - src_bone: Sphere04
+    hanim_bone: 115
+  - src_bone: r_eyeball_joint
+    hanim_bone: 42
+  - src_bone: r_eyeball_joint_PIVOT 1
+    hanim_bone: 115
+  - src_bone: Sphere01
+    hanim_bone: 115
+  - src_bone: Sphere02
+    hanim_bone: 115
+  - src_bone: skulltop
+    hanim_bone: 112
+  extraBones: []
