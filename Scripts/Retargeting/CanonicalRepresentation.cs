@@ -307,7 +307,7 @@ namespace ASAPToolkit.Unity.Retargeting {
             if (fbf != null)
                 Debug.LogError("TODO: Applying motion to fake bone not implemented yet. Need to sum up transformations from both source bones.");
             if (parent == null) bone.position = p;
-            bone.localPosition = parent.TransformPointFromCanonical(p);
+            else bone.position = parent.TransformPointFromCanonical(p);
         }
 
         // TODO: Allow custom canonical skeletons

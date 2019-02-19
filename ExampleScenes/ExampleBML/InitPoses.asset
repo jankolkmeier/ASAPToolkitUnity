@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: InitPoses
   m_EditorClassIdentifier: 
   bmls:
-  - "<bml id=\"bml1\" characterId=\"COUCH_M_1\"\n\txmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"\n\txmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<postureShift
+  - "<bml id=\"bml1\" characterId=\"BlueGuy\"\n\txmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"\n\txmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<postureShift
     id=\"p1\" start=\"0\" end=\"1.5\">            \r\n    <stance type=\"SITTING\"
-    /> \r\n    <pose part=\"LEGS\" lexeme=\"HIP2\" />\r\n</postureShift>\n</bml>"
+    /> \r\n    <pose part=\"WHOLEBODY\" lexeme=\"ROOT2\" />\r\n</postureShift>\n</bml>"

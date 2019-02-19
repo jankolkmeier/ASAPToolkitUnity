@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: DebugBorg
   m_EditorClassIdentifier: 
   bmls:
-  - "<bml id=\"bml1\" characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+  - "<bml id=\"bml1\" characterId=\"BlueGuy\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
     \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<gesture id=\"g1\" lexeme=\"P_POI_INT_1\"
     mode=\"RIGHT_HAND\" start=\"0\" />\n</bml>"

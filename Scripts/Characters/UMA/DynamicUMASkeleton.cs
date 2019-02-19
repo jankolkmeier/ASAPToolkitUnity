@@ -73,12 +73,12 @@ namespace ASAPToolkit.Unity.Characters {
 
         void OnUpdated(UMAData umaData) {
             vJoints = null;
-            _ready = false;
             vJoints = GenerateVJoints();
+            _ready = vJoints != null;
         }
      
         public override bool Ready() {
-            return vJoints == null;
+            return _ready;
         }
 
     }

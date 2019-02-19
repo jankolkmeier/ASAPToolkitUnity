@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace ASAPToolkit.Unity.Characters.UMA  {
 
+    [RequireComponent(typeof(UMADynamicAvatar))]
     public class UMABonePoseFace : MonoBehaviour, ICharacterFace {
 
         public BonePoseTargetSet targetSet;
@@ -18,6 +19,7 @@ namespace ASAPToolkit.Unity.Characters.UMA  {
         private bool overrideMecanimNeck = false;
         private bool overrideMecanimHead = false;
 
+        private UMADynamicAvatar uma;
         [System.NonSerialized]
         public UMAData umaData;
 
@@ -33,15 +35,24 @@ namespace ASAPToolkit.Unity.Characters.UMA  {
 
         public float[] values;
 
-        // Use this for initialization
-        void Start() {
+
+        void Awake() {
+            uma = GetComponent<UMADynamicAvatar>();
+            uma.CharacterCreated.AddListener(OnCreated);
+            uma.CharacterUpdated.AddListener(OnUpdated);
+        }
+
+        void OnCreated(UMAData _umaData) {
+            OnUpdated(_umaData);
+        }
+
+        void OnUpdated(UMAData _umaData) {
+            umaData = _umaData;
+            initialized = false;
+            Initialize();
         }
 
         public void Initialize() {
-            if (umaData == null) umaData = gameObject.GetComponent<UMAData>();
-            if (umaData == null) umaData = gameObject.GetComponentInChildren<UMAData>();
-            if (umaData == null) umaData = gameObject.GetComponentInParent<UMAData>();
-
             if (umaData != null && umaData.skeleton != null) {
 
                 expressionSet = umaData.umaRecipe.raceData.expressionSet;
@@ -66,17 +77,13 @@ namespace ASAPToolkit.Unity.Characters.UMA  {
                 }
             }
         }
+        
 
         public bool Ready() {
             return initialized;
         }
 
         void Update() {
-            if (!initialized) {
-                Initialize();
-                return;
-            }
-
             // Fix for animation systems which require consistent values frame to frame
             try { 
                 Quaternion headRotation = umaData.skeleton.GetRotation(headHash);
