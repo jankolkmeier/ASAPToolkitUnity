@@ -31,16 +31,16 @@ namespace ASAPToolkit.Unity.BML {
         }
 
         public void Send(string data) {
-            middleware.Send(data);
+            middleware.Send(new MSG(data));
         }
 
-        public void OnMessage(string rawMsg) {
-            if (rawMsg.Length == 0) return;
+        public void OnMessage(MSG msg) {
+            if (msg.data.Length == 0) return;
             try {
-                FeedbackMiddlewareMessage msg = JsonUtility.FromJson<FeedbackMiddlewareMessage>(rawMsg);
-                feedback.HandleFeedback(System.Uri.UnescapeDataString(msg.feedback.content).Replace('+', ' '));
+                FeedbackMiddlewareMessage fmsg = JsonUtility.FromJson<FeedbackMiddlewareMessage>(msg.data);
+                feedback.HandleFeedback(System.Uri.UnescapeDataString(fmsg.feedback.content).Replace('+', ' '));
             } catch (System.ArgumentException ae) {
-                Debug.Log("Message not valid JSON:\n" + rawMsg + "\n\n" + ae);
+                Debug.Log("Message not valid JSON:\n" + msg.data + "\n\n" + ae);
             }
         }
 
