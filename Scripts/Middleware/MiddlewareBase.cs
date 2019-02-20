@@ -5,14 +5,29 @@ using UnityEngine;
 
 namespace ASAPToolkit.Unity.Middleware {
 
+    public struct MSG {
+        public string data;
+        public string src;
+
+        public MSG(string d) {
+            this.data = d;
+            this.src = "";
+        }
+
+        public MSG(string d, string s) {
+            this.data = d;
+            this.src = s;
+        }
+    }
+
     public interface IMiddleware {
-        void Send(string data);
+        void Send(MSG msg);
         void Register(IMiddlewareListener l);
         void Unregister(IMiddlewareListener l);
     }
 
     public interface IMiddlewareListener {
-        void OnMessage(string msg);
+        void OnMessage(MSG msg);
     }
 
     public abstract class MiddlewareBase : MonoBehaviour, IMiddleware {
@@ -22,8 +37,8 @@ namespace ASAPToolkit.Unity.Middleware {
         protected ManualResetEvent send_MRSTE = new ManualResetEvent(false);
 
         private List<IMiddlewareListener> listeners = new List<IMiddlewareListener>();
-        protected Queue<string> _sendQueue = new Queue<string>();
-        protected Queue<string> _receiveQueue = new Queue<string>();
+        protected Queue<MSG> _sendQueue = new Queue<MSG>();
+        protected Queue<MSG> _receiveQueue = new Queue<MSG>();
         protected System.Object _sendQueueLock = new System.Object();
         protected System.Object _receiveQueueLock = new System.Object();
 
@@ -38,17 +53,16 @@ namespace ASAPToolkit.Unity.Middleware {
         private void Update() {
             bool haveData = true;
             while (haveData) {
-                string data = "";
+                MSG msg = new MSG("");
                 lock (_receiveQueueLock) {
                     while (maxReadBufferSize > 0 && _receiveQueue.Count > maxReadBufferSize) _receiveQueue.Dequeue();
-                    if (_receiveQueue.Count > 0) data = _receiveQueue.Dequeue();
+                    if (_receiveQueue.Count > 0) msg = _receiveQueue.Dequeue();
                     else haveData = false;
                 }
-
-                if (data == null || data.Length == 0) return;
+                if (msg.data == null || msg.data.Length == 0) return;
 
                 foreach (IMiddlewareListener l in listeners) {
-                    l.OnMessage(data);
+                    l.OnMessage(msg);
                 }
             }
         }
@@ -56,7 +70,16 @@ namespace ASAPToolkit.Unity.Middleware {
         public void Send(string data) {
             lock (_sendQueueLock) {
                 while (maxSendBufferSize > 0 && _sendQueue.Count > maxSendBufferSize) _sendQueue.Dequeue();
-                _sendQueue.Enqueue(data);
+                _sendQueue.Enqueue(new MSG(data));
+                send_MRSTE.Set();
+                send_MRSTE.Reset();
+            }
+        }
+
+        public void Send(MSG msg) {
+            lock (_sendQueueLock) {
+                while (maxSendBufferSize > 0 && _sendQueue.Count > maxSendBufferSize) _sendQueue.Dequeue();
+                _sendQueue.Enqueue(msg);
                 send_MRSTE.Set();
                 send_MRSTE.Reset();
             }

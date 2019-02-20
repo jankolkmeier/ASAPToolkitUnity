@@ -11,8 +11,8 @@ namespace ASAPToolkit.Unity.Middleware {
 
         public int port;
         public string address;
-        public string topicWrite;
-        public string topicRead;
+        public string defaultWriteTopic;
+        public string[] topicRead;
 
         Thread amqWriterThread;
         Thread amqReaderThread;
@@ -29,14 +29,6 @@ namespace ASAPToolkit.Unity.Middleware {
 
         void Awake() {
             AMQStart();
-        }
-
-        void Start() {
-
-        }
-
-        void Update() {
-
         }
 
         void AMQStart() {
@@ -64,21 +56,32 @@ namespace ASAPToolkit.Unity.Middleware {
 
         void AMQWriter() {
             try {
-                IDestination destination_Write = SessionUtil.GetDestination(session, topicWrite);
-                IMessageProducer producer = session.CreateProducer(destination_Write);
-                producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
-                producer.RequestTimeout = System.TimeSpan.FromMilliseconds(250);
+                IDestination destination_Write = SessionUtil.GetDestination(session, defaultWriteTopic);
+                IMessageProducer defaultProducer = session.CreateProducer(destination_Write);
+                defaultProducer.DeliveryMode = MsgDeliveryMode.NonPersistent;
+                defaultProducer.RequestTimeout = System.TimeSpan.FromMilliseconds(250);
                 while (networkOpen) {
-                    string msg = "";
+                    MSG msg = new MSG("");
                     lock (_sendQueueLock) {
                         if (_sendQueue.Count > 0) {
                             msg = _sendQueue.Dequeue();
                         }
                     }
 
-                    if (msg != null && msg.Length > 0) {
-
-                        producer.Send(session.CreateTextMessage(msg));
+                    if (msg.data.Length > 0) {
+                        if (msg.src.Length == 0) {
+                            IMessageProducer producer = session.CreateProducer(SessionUtil.GetDestination(session, defaultWriteTopic));
+                            producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
+                            producer.RequestTimeout = receiveTimeout;
+                            producer.Send(session.CreateTextMessage(msg.data));
+                            Debug.Log("Sending: " + msg.data+ "\n to: "+defaultWriteTopic);
+                            defaultProducer.Send(session.CreateTextMessage(msg.data));
+                        } else {
+                            IMessageProducer producer = session.CreateProducer(SessionUtil.GetDestination(session, msg.src));
+                            producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
+                            producer.RequestTimeout = receiveTimeout;
+                            producer.Send(session.CreateTextMessage(msg.data));
+                        }
                     }
                 }
             } catch (System.Exception e) {
@@ -87,11 +90,14 @@ namespace ASAPToolkit.Unity.Middleware {
         }
 
         void AMQReader() {
+            IMessageConsumer[] consumers = new IMessageConsumer[topicRead.Length];
             try {
-                ITopic destination_Read = SessionUtil.GetTopic(session, topicRead);
-                IMessageConsumer consumer = session.CreateConsumer(destination_Read);
-                Debug.Log("AMQ subscribing to " + destination_Read);
-                consumer.Listener += new MessageListener(OnAMQMessage);
+                for (int i = 0; i < topicRead.Length; i++) {
+                    ITopic destination_Read = SessionUtil.GetTopic(session, topicRead[i]);
+                    consumers[i] = session.CreateConsumer(destination_Read);
+                    Debug.Log("AMQ subscribing to " + destination_Read);
+                    consumers[i].Listener += new MessageListener(OnAMQMessage);
+                }
                 while (networkOpen) {
                     semaphore.WaitOne((int)receiveTimeout.TotalMilliseconds, true);
                 }
@@ -102,7 +108,7 @@ namespace ASAPToolkit.Unity.Middleware {
 
         void OnAMQMessage(IMessage receivedMsg) {
             lock (_receiveQueueLock) {
-                _receiveQueue.Enqueue((receivedMsg as ITextMessage).Text);
+                _receiveQueue.Enqueue(new MSG((receivedMsg as ITextMessage).Text, receivedMsg.NMSDestination.ToString()));
             }
             semaphore.Set();
         }

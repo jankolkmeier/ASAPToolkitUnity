@@ -90,19 +90,27 @@ namespace ASAPToolkit.Unity.Middleware {
 #else
             try {
                 IDestination destination_Write = SessionUtil.GetDestination(session, topicWrite);
-                IMessageProducer producer = session.CreateProducer(destination_Write);
-                producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
-                producer.RequestTimeout = receiveTimeout;
+                IMessageProducer defaultProducer = session.CreateProducer(destination_Write);
+                defaultProducer.DeliveryMode = MsgDeliveryMode.NonPersistent;
+                defaultProducer.RequestTimeout = receiveTimeout;
                 while (networkOpen) {
-                    string msg = "";
+                    MSG msg = new MSG("");
                     lock (_sendQueueLock) {
                         if (_sendQueue.Count > 0) {
                             msg = _sendQueue.Dequeue();
                         }
                     }
 
-                    if (msg != null && msg.Length > 0)
-                        producer.Send(session.CreateTextMessage(msg));
+                    if (msg.data.Length > 0) {
+                        if (msg.src.Length == 0) {
+                            defaultProducer.Send(session.CreateTextMessage(msg.data));
+                        } else {
+                            IMessageProducer producer = session.CreateProducer(SessionUtil.GetDestination(session, msg.src));
+                            producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
+                            producer.RequestTimeout = receiveTimeout;
+                            producer.Send(session.CreateTextMessage(msg.data));
+                        }
+                    }
                 }
             } catch (System.Exception e) {
                 Debug.Log("ApolloWriter Exception " + e);
@@ -141,7 +149,7 @@ namespace ASAPToolkit.Unity.Middleware {
 #else
         void OnSTOMPMessage(IMessage receivedMsg) {
             lock (_receiveQueueLock) {
-                _receiveQueue.Enqueue((receivedMsg as ITextMessage).Text);
+                _receiveQueue.Enqueue(new MSG((receivedMsg as ITextMessage).Text, receivedMsg.NMSDestination.ToString()));
             }
             semaphore.Set();
         }

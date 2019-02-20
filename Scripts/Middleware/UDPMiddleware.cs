@@ -71,13 +71,15 @@ namespace ASAPToolkit.Unity.Middleware {
     }
 #else
         private void DataListener() {
+            IPEndPoint remoteEndpoint = new IPEndPoint(IPAddress.Any, 0);
             IPEndPoint localEndpoint = new IPEndPoint(IPAddress.Any, _listenPort);
             udpClient = new UdpClient(localEndpoint);
             _listening = true;
             while (_running) {
-                byte[] buffer = udpClient.Receive(ref localEndpoint);
+
+                byte[] buffer = udpClient.Receive(ref remoteEndpoint);
                 lock (_receiveQueueLock) {
-                    _receiveQueue.Enqueue(Encoding.ASCII.GetString(buffer));
+                    _receiveQueue.Enqueue(new MSG(Encoding.ASCII.GetString(buffer), remoteEndpoint.ToString()));
                 }
             }
             udpClient.Close();
@@ -137,15 +139,15 @@ namespace ASAPToolkit.Unity.Middleware {
             try {
                 while (!_listening) Thread.Sleep(100);
                 while (_running) {
-                    string nextPacket = "";
+                    MSG nextPacket = new MSG("");
                     lock (_sendQueueLock) {
                         if (_sendQueue.Count > 0) {
                             nextPacket = _sendQueue.Dequeue();
                         }
                     }
 
-                    if (nextPacket.Length != 0) {
-                        byte[] sendBytes = Encoding.ASCII.GetBytes(nextPacket);
+                    if (nextPacket.data.Length > 0) {
+                        byte[] sendBytes = Encoding.ASCII.GetBytes(nextPacket.data);
                         udpClient.Send(sendBytes, sendBytes.Length, _asapIP, _sendPort);
                     }
                     Thread.Sleep(1);

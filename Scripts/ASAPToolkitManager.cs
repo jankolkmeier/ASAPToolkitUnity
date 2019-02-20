@@ -62,18 +62,18 @@ namespace ASAPToolkit.Unity {
         }
 
         // Maybe parsing/etc. could be done in the communication thread better?
-        public void OnMessage(string rawMsg) {
+        public void OnMessage(MSG msg) {
             AsapMessage asapMessage;
             try {
-                asapMessage = JsonUtility.FromJson<AsapMessage>(rawMsg);
+                asapMessage = JsonUtility.FromJson<AsapMessage>(msg.data);
             } catch (System.Exception e) {
-                Debug.LogWarning("Failed to parse incomming msg to JSON: " + rawMsg + "\n\n" + e);
+                Debug.LogWarning("Failed to parse incomming msg to JSON: " + msg.data + "\n\n" + e);
                 return;
             }
 
             switch (asapMessage.msgType) {
                 case AUPROT.MSGTYPE_AGENTSPECREQUEST: // AgentSpecRequest type msg comming from ASAP
-                    AgentSpecRequest agentSpecRequest = JsonUtility.FromJson<AgentSpecRequest>(rawMsg);
+                    AgentSpecRequest agentSpecRequest = JsonUtility.FromJson<AgentSpecRequest>(msg.data);
                     if (!agentRequests.ContainsKey(agentSpecRequest.agentId)) {
                         agentRequests.Add(agentSpecRequest.agentId, agentSpecRequest);
                         Debug.Log("Added agent request: " + agentSpecRequest.source + ":" + agentSpecRequest.agentId);
@@ -87,7 +87,7 @@ namespace ASAPToolkit.Unity {
                     if (agents.ContainsKey(asapMessage.agentId)) {
                         if (agents[asapMessage.agentId].agentState == null)
                             agents[asapMessage.agentId].agentState = new AgentState();
-                        JsonUtility.FromJsonOverwrite(rawMsg, agents[asapMessage.agentId].agentState);
+                        JsonUtility.FromJsonOverwrite(msg.data, agents[asapMessage.agentId].agentState);
 
                         agents[asapMessage.agentId].agentState.boneRotationsParsed = new Quaternion[agents[asapMessage.agentId].agentState.nBones];
                         agents[asapMessage.agentId].agentState.boneTranslationsParsed = new Vector3[2]; // TODO: be explicit in protocol how many bones are sent

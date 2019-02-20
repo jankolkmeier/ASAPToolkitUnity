@@ -174,7 +174,7 @@ namespace ASAPToolkit.Unity.Middleware {
             while (_running) {
                 byte[] buffer = udpClient.Receive(ref localEndpoint);
                 lock (_receiveQueueLock) {
-                    _receiveQueue.Enqueue(Encoding.ASCII.GetString(buffer));
+                    _receiveQueue.Enqueue(new MSG(Encoding.ASCII.GetString(buffer)));
                 }
             }
             udpClient.Close();
@@ -230,7 +230,7 @@ namespace ASAPToolkit.Unity.Middleware {
                     bool havePackets = true;
                     while (havePackets) {
                         if (udpClient == null) continue;
-                        string nextPacket = "";
+                        MSG nextPacket = new MSG("");
 
                         lock (_sendQueueLock) {
                             if (_sendQueue.Count > 0) {
@@ -241,9 +241,19 @@ namespace ASAPToolkit.Unity.Middleware {
                             }
                         }
 
-                        if (nextPacket.Length != 0) {
-                            byte[] sendBytes = Encoding.ASCII.GetBytes(nextPacket);
-                            udpClient.Send(sendBytes, sendBytes.Length, _remoteIP, _dataPort);
+                        if (nextPacket.data.Length > 0) {
+                            byte[] sendBytes = Encoding.ASCII.GetBytes(nextPacket.data);
+                            if (nextPacket.src.Length == 0) {
+                                udpClient.Send(sendBytes, sendBytes.Length, _remoteIP, _dataPort);
+                            } else {
+                                string[] elems = nextPacket.src.Split(':');
+                                if (elems.Length != 2) {
+                                    Debug.LogError("Can't sent to custom dest: " + nextPacket.src);
+                                }
+                                string _ip = elems[0];
+                                int _port = int.Parse(elems[1]);
+                                udpClient.Send(sendBytes, sendBytes.Length, _ip, _port);
+                            }
                         }
                     }
 
