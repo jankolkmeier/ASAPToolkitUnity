@@ -65,7 +65,7 @@ namespace ASAPToolkit.Unity.Characters {
             }
 
             for (int i = 0; i < rig.boneMap.Length; i++) {
-                CanonicalRepresentation.HAnimBones bone = rig.boneMap[i].canonicalBoneName;
+                //CanonicalRepresentation.HAnimBones bone = rig.boneMap[i].canonicalBoneName;
                 //if (bone == CanonicalRepresentation.HAnimBones.NONE) continue;
                 rig.boneMap[i].ApplyRotationFromCanonical(poses[i]);
                 if (i < 2) rig.boneMap[i].ApplyLocalPositionFromCanonical(rootTransforms[i]);

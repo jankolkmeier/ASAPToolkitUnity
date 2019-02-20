@@ -74,7 +74,22 @@ namespace ASAPToolkit.Unity.Characters {
         void OnUpdated(UMAData umaData) {
             vJoints = null;
             vJoints = GenerateVJoints();
+            AddDefaultTargets(umaData);
             _ready = vJoints != null;
+        }
+
+        public void AddDefaultTargets(UMAData umaData) {
+            ASAPAgent agent = GetComponent<ASAPAgent>();
+            if (agent == null) return;
+            Transform head = umaData.GetBoneGameObject("Head").transform;
+            Transform headcenter = head.Find("head_" + agent.agentId);
+            if (headcenter == null) {
+                headcenter = new GameObject("head_" + agent.agentId).transform;
+                headcenter.parent = head;
+                headcenter.localPosition = new Vector3(-0.115f, 0.0f, 0.0f);
+                headcenter.localRotation = Quaternion.identity;
+                headcenter.gameObject.AddComponent<Environment.WorldObject>();
+            }
         }
      
         public override bool Ready() {
