@@ -361,7 +361,7 @@ namespace ASAPToolkit.Unity.Retargeting {
 
 
         public CanonicalPose ExportPose() {
-            return this.pose;
+            return CanonicalPose.Copy(this.pose);
         }
 
         public void ApplyPose(CanonicalPose p) {
@@ -411,11 +411,29 @@ namespace ASAPToolkit.Unity.Retargeting {
         public CanonicalRepresentation.HAnimBones[] parts;
         public Quaternion[] rotations;
         public Vector3 translation;
+        public float timestamp;
 
-        public CanonicalPose(CanonicalRepresentation.HAnimBones[] all_parts, out int[] idxMap) {
+        public static CanonicalPose Copy(CanonicalPose src) {
+            return new CanonicalPose(src);
+        }
+
+        public CanonicalPose(CanonicalPose copyFrom) {
+            this.parts = new CanonicalRepresentation.HAnimBones[copyFrom.parts.Length];
+            copyFrom.parts.CopyTo(this.parts, 0);
+            this.rotations = new Quaternion[copyFrom.rotations.Length];
+            copyFrom.rotations.CopyTo(rotations, 0);
+            this.translation = copyFrom.translation;
+            this.timestamp = copyFrom.timestamp;
+        }
+
+        public CanonicalPose(CanonicalRepresentation.HAnimBones[] all_parts, out int[] idxMap) 
+            :this(all_parts, out idxMap, 0f) {}
+
+        public CanonicalPose(CanonicalRepresentation.HAnimBones[] all_parts, out int[] idxMap, float timestamp) {
             this.parts = all_parts.Where(p => p != CanonicalRepresentation.HAnimBones.NONE).ToArray();
             this.rotations = new Quaternion[this.parts.Length];
             this.translation = Vector3.zero;
+            this.timestamp = timestamp;
             idxMap = GetIdxMap(all_parts);
         }
 
@@ -466,4 +484,21 @@ namespace ASAPToolkit.Unity.Retargeting {
         }
     }
 
+    public class SyncPoint {
+        public string name;
+        public float relativeTime;
+
+        public SyncPoint(string name, float time) {
+            this.name = name;
+            this.relativeTime = time;
+        }
+    }
+
+    public class CanonicalPoseClip {
+        public CanonicalPose[] frames;
+
+        public CanonicalPoseClip(CanonicalPose[] frames) {
+            this.frames = frames;
+        }
+    }
 }

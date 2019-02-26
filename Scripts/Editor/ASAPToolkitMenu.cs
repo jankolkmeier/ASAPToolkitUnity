@@ -60,13 +60,11 @@ namespace ASAPToolkit.Unity.Editor {
             //w.Register();
         }
 
-/*
         [MenuItem("ASAP/Animation Exporter Window")]
         static void Init() {
             AnimationExporterWindow w = EditorWindow.GetWindow<AnimationExporterWindow>(false, "ASAP Animation Exporter", true);
             w.Show();
         }
- */
 
 
         [MenuItem("ASAP/Create BoneMap")]
