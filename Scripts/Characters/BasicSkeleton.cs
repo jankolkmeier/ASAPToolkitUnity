@@ -52,6 +52,10 @@ namespace ASAPToolkit.Unity.Characters {
             return null;
         }
 
+        public void ApplyPose(CanonicalPose pose, CanonicalRepresentation.HAnimBones[] bones) {
+            if (pose != null) rig.ApplyPose(pose, bones);
+        }
+
         public void ApplyPose(CanonicalPose pose) {
             if (pose != null) rig.ApplyPose(pose);
         }
