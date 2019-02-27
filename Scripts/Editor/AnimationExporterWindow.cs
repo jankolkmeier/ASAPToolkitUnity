@@ -466,8 +466,6 @@ namespace ASAPToolkit.Unity.Editor {
                     if (canonicalBone == CanonicalRepresentation.HAnimBones.NONE || !boneSet.Contains(canonicalBone)) continue;
                     w.WriteString(" ");
                     if (writeTranslation && canonicalBone == CanonicalRepresentation.HAnimBones.HumanoidRoot) {
-                        // TODO: check which one is actually root translation.
-                        int rootIdx = System.Array.IndexOf(frame.parts, CanonicalRepresentation.HAnimBones.HumanoidRoot);
                         WriteVector(w, frame.translation);
                         w.WriteString(" ");
                     }
@@ -481,11 +479,11 @@ namespace ASAPToolkit.Unity.Editor {
         }
 
         private void WriteVector(XmlWriter w, Vector3 v) {
-            w.WriteString(string.Join(" ", ExtractAsapTranslation(v).Select(f => f.ToString("0.0##")).ToArray()));
+            w.WriteString(string.Join(" ", ExtractAsapTranslation(v).Select(f => f.ToString("###0.0000")).ToArray()));
         }
 
         private void WriteQuaternion(XmlWriter w, Quaternion q) {
-            w.WriteString(string.Join(" ", ExtractAsapQuaternionRotation(q).Select(f => f.ToString("0.0##")).ToArray()));
+            w.WriteString(string.Join(" ", ExtractAsapQuaternionRotation(q).Select(f => f.ToString("###0.0000")).ToArray()));
         }
 
         private static float[] ExtractAsapQuaternionRotation(Transform t) {
