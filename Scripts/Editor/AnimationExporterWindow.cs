@@ -36,14 +36,7 @@ namespace ASAPToolkit.Unity.Editor {
 
         private string fileSuffix = "";
 
-        private enum MASK_MODE {
-            ALL = 0,
-            ALL_ANIMATED = 1,
-            MASK_MAPPED_ALL = 2,
-            MASK_MAPPED_ANIMATED = 3
-        }
-
-        private MASK_MODE maskMode;
+        private CanonicalRepresentation.MASK_MODE maskMode;
 
         void WriteXMLFile(string path, string name, string xml) {
             string filePath = System.IO.Path.Combine(path, name + fileSuffix + ".xml");
@@ -89,7 +82,7 @@ namespace ASAPToolkit.Unity.Editor {
             }
 
             if (currentRig == null) return;
-            Animator animator = currentRig.GetComponent<Animator>();
+            Animator animator = currentRig.GetAnimator();
             if (animator == null) return;
             //UnityEditor.Selection.objects = new UnityEngine.Object[] { currentRig };
 
@@ -121,7 +114,7 @@ namespace ASAPToolkit.Unity.Editor {
 
             EditorGUILayout.BeginVertical();
             currentAvatarMask = (AvatarMask)EditorGUILayout.ObjectField(currentAvatarMask, typeof(AvatarMask), true);
-            maskMode = (MASK_MODE)EditorGUILayout.EnumPopup("Mask Mode: ", maskMode);
+            maskMode = (CanonicalRepresentation.MASK_MODE)EditorGUILayout.EnumPopup("Mask Mode: ", maskMode);
             ignoreRootTranslation = EditorGUILayout.Toggle("Ignore Root Translation", ignoreRootTranslation);
             EditorGUILayout.EndVertical();
 
@@ -156,45 +149,11 @@ namespace ASAPToolkit.Unity.Editor {
         void HandleExport(AnimationClip clip, bool batch) {
             if (!Application.isPlaying || !currentRig.Ready()) return;
 
-            CanonicalRepresentation.HAnimBones[] boneUnion = null;
+            CanonicalRepresentation.HAnimBones[] boneUnion = currentRig.GetExportBones(maskMode, currentAvatarMask, clip);
             //List<CanonicalRepresentation.HAnimBones> boneUnion = new List<CanonicalRepresentation.HAnimBones>();
 
             //List<CanonicalRepresentation.HAnimBones> skeletonUnion = new List<CanonicalRepresentation.HAnimBones>();
             //List<CanonicalRepresentation.HAnimBones> animatedUnion = new List<CanonicalRepresentation.HAnimBones>();
-
-            if (maskMode == MASK_MODE.ALL) {
-                boneUnion = currentRig.ExportPose().parts;
-            } else if (maskMode == MASK_MODE.ALL_ANIMATED && selectedClip > 0) {
-                boneUnion = GetAnimatedCanonicalBones(currentRig, clip);
-            } else if ((maskMode == MASK_MODE.MASK_MAPPED_ALL || maskMode == MASK_MODE.MASK_MAPPED_ANIMATED) && currentAvatarMask != null) {
-                List<CanonicalRepresentation.HAnimBones> _boneUnion = new List<CanonicalRepresentation.HAnimBones>();
-                CanonicalRepresentation.HAnimBones[] skeletonBones = currentRig.ExportPose().parts;
-                CanonicalRepresentation.HAnimBones[] animatedBones = new CanonicalRepresentation.HAnimBones[0];
-                if (selectedClip > 0)
-                    animatedBones = GetAnimatedCanonicalBones(currentRig, clip);
-                for (int i = 0; i < currentAvatarMask.transformCount; i++) {
-                    if (!currentAvatarMask.GetTransformActive(i)) continue;
-                    string boneName = currentAvatarMask.GetTransformPath(i).Split(new char[] { '/' }).Last();
-                    if (CanonicalRepresentation.HAnimBoneNames.Contains(boneName)) {
-                        CanonicalRepresentation.HAnimBones canonicalBone = (CanonicalRepresentation.HAnimBones)System.Enum.Parse(typeof(CanonicalRepresentation.HAnimBones), boneName, false);
-                        if (maskMode == MASK_MODE.MASK_MAPPED_ALL && skeletonBones.Contains(canonicalBone)) {
-                            _boneUnion.Add(canonicalBone);
-                        }
-
-                        if (maskMode == MASK_MODE.MASK_MAPPED_ANIMATED && animatedBones.Contains(canonicalBone)) {
-                            _boneUnion.Add(canonicalBone);
-                        }
-                    }
-                }
-                /*
-                if (skeletonUnion.Count > 0)
-                    GUILayout.Label("Mask Union w/ skeleton: "+skeletonUnion.Count);//+" / "+skeletonUnion.Aggregate((i,j) => i+" "+j));
-                if (animatedUnion.Count > 0)
-                    GUILayout.Label("Mask Union w/ animated: "+animatedUnion.Count);//+" / "+animatedUnion.Aggregate((i,j) => i+" "+j));
-                 */
-                boneUnion = _boneUnion.ToArray();
-            }
-
 
 
             if (!batch) {
@@ -204,16 +163,16 @@ namespace ASAPToolkit.Unity.Editor {
                 if (boneUnion != null && boneUnion.Length > 0) {
                     string descr = "";
                     switch (maskMode) {
-                        case MASK_MODE.ALL:
+                        case CanonicalRepresentation.MASK_MODE.ALL:
                             descr = "Writing animation on all skeleton bones";
                             break;
-                        case MASK_MODE.ALL_ANIMATED:
+                        case CanonicalRepresentation.MASK_MODE.ALL_ANIMATED:
                             descr = "Writing animation only for bones with animation data";
                             break;
-                        case MASK_MODE.MASK_MAPPED_ALL:
+                        case CanonicalRepresentation.MASK_MODE.MASK_MAPPED_ALL:
                             descr = "Writing animation on all skeleton bones that are enabled in Mask";
                             break;
-                        case MASK_MODE.MASK_MAPPED_ANIMATED:
+                        case CanonicalRepresentation.MASK_MODE.MASK_MAPPED_ANIMATED:
                             descr = "Writing animation on all skeleton bones that are enabled in Mask and have animation data";
                             break;
                     }
@@ -231,6 +190,7 @@ namespace ASAPToolkit.Unity.Editor {
             if (selectedClip == 0) { // POSE
                 restposeName = EditorGUILayout.TextField("Restpose name: ", restposeName);
                 if (!batch && GUILayout.Button("Pose as RestPose")) {
+                    Debug.Log("Writing rest pose...");
                     CanonicalPoseClip c = new CanonicalPoseClip(new CanonicalPose[] { currentRig.ExportPose() });
                     string xml = WriteXML(c, ExportMode.GestureBindingRestPose, boneUnion, null);
                     if (restposeFilesPath.Length > 0 && restposeName.Length > 0) {
@@ -438,26 +398,6 @@ namespace ASAPToolkit.Unity.Editor {
             return xml;
         }
 
-        public CanonicalRepresentation.HAnimBones[] GetAnimatedCanonicalBones(MotionExportSkeleton p, AnimationClip clip) {
-            List<CanonicalRepresentation.HAnimBones> res = new List<CanonicalRepresentation.HAnimBones>();
-            foreach (UnityEditor.EditorCurveBinding binding in UnityEditor.AnimationUtility.GetCurveBindings(clip)) {
-                //AnimationCurve curve = AnimationUtility.GetEditorCurve (clip, binding);
-                string[] pathElems = binding.path.Split('/');
-                string boneName = pathElems[pathElems.Length - 1];
-                CanonicalRepresentation.HAnimBones hAnimName = p.BoneNameMapped(boneName);
-                if ((binding.propertyName.StartsWith("m_LocalRotation") || binding.propertyName.StartsWith("m_LocalPosition")) &&
-                    hAnimName != CanonicalRepresentation.HAnimBones.NONE &&
-                    !res.Contains(hAnimName)) {
-                    res.Add(hAnimName);
-                }
-
-                //if (binding.propertyName.StartsWith("m_LocalPosition")) {
-                // Translation bones...
-                //}
-            }
-            return res.ToArray();
-        }
-
         public SyncPoint[] GetSyncPoints(AnimationClip clip) {
             List<SyncPoint> res = new List<SyncPoint>();
             foreach (AnimationEvent ae in UnityEditor.AnimationUtility.GetAnimationEvents(clip)) {
@@ -515,12 +455,12 @@ namespace ASAPToolkit.Unity.Editor {
                     float time = (frame.timestamp - frameMin)/duration;
                     if (framesWritten == 0) time = 0f;
                     if (framesWritten == totalFrames-1) time = 1f;
-                    w.WriteString(time.ToString("0.0##"));
+                    w.WriteString(time.ToString("###0.00000"));
                 }
 
                 if (writeTimestamp && !normalizeTime) {
                     float time = frame.timestamp - frameMin;
-                    w.WriteString(time.ToString("0.0##"));
+                    w.WriteString(time.ToString("###0.00000"));
                 }
                 foreach (CanonicalRepresentation.HAnimBones canonicalBone in System.Enum.GetValues(typeof(CanonicalRepresentation.HAnimBones))) {
                     if (canonicalBone == CanonicalRepresentation.HAnimBones.NONE || !boneSet.Contains(canonicalBone)) continue;

@@ -227,6 +227,28 @@ namespace ASAPToolkit.Unity.Retargeting {
             }
             return res.ToArray();
         }
+
+        public static CanonicalRepresentation.HAnimBones[] AvatarMaskToCanonicalBones(AvatarMask boneMask) {
+            if (boneMask == null) return null;
+
+            List<CanonicalRepresentation.HAnimBones> _bones = new List<CanonicalRepresentation.HAnimBones>();
+            for (int i = 0; i < boneMask.transformCount; i++) {
+                if (!boneMask.GetTransformActive(i)) continue;
+                string boneName = boneMask.GetTransformPath(i).Split(new char[] { '/' }).Last();
+                if (CanonicalRepresentation.HAnimBoneNames.Contains(boneName)) {
+                    CanonicalRepresentation.HAnimBones canonicalBone = (CanonicalRepresentation.HAnimBones)System.Enum.Parse(typeof(CanonicalRepresentation.HAnimBones), boneName, false);
+                    _bones.Add(canonicalBone);
+                }
+            }
+            return _bones.ToArray();
+        }
+
+        public enum MASK_MODE {
+            ALL = 0,
+            ALL_ANIMATED = 1,
+            MASK_MAPPED_ALL = 2,
+            MASK_MAPPED_ANIMATED = 3
+        }
     }
 
     public class AlignedBone {
@@ -365,10 +387,14 @@ namespace ASAPToolkit.Unity.Retargeting {
         }
 
         public void ApplyPose(CanonicalPose p) {
+            ApplyPose(p, null);
+        }
+
+        public void ApplyPose(CanonicalPose p, CanonicalRepresentation.HAnimBones[] bones) {
             if (boneMap == null || p == null) return;
             int[] _applyMap = p.GetIdxMap(boneMap);
             for (int i = 0; i < _applyMap.Length; i++) {
-                if (_applyMap[i] < 0) continue;
+                if (_applyMap[i] < 0 || (bones != null && !bones.Contains(boneMap[i].canonicalBoneName))) continue;
                 boneMap[i].ApplyRotationFromCanonical(p.GetRotation(_applyMap[i]));
                 if (boneMap[i].canonicalBoneName == CanonicalRepresentation.HAnimBones.HumanoidRoot) {
                     boneMap[i].ApplyLocalPositionFromCanonical(p.translation);
