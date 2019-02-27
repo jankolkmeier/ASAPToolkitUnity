@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mappings:
   - src_bone: Position
-    hanim_bone: 116
+    hanim_bone: 115
   - src_bone: Hips
     hanim_bone: 0
   - src_bone: LowerBack
