@@ -4,13 +4,13 @@ using System.Threading;
 using UnityEngine;
 using Apache.NMS;
 using Apache.NMS.Util;
+using Apache.NMS.ActiveMQ;
 using Apache.NMS.Stomp;
 
 namespace ASAPToolkit.Unity.Middleware {
     public class AMQMiddleware : MiddlewareBase {
 
-        public int port;
-        public string address;
+        public string URI;
         public string defaultWriteTopic;
         public string[] topicRead;
 
@@ -36,9 +36,10 @@ namespace ASAPToolkit.Unity.Middleware {
             //string address = global_AMQ_settings.GetComponent<GlobalAMQSettings>().address;
             //int port = global_AMQ_settings.GetComponent<GlobalAMQSettings>().port;
             try {
-                factory = new ConnectionFactory("tcp://" + address + ":" + port.ToString());
-                connection = factory.CreateConnection("admin", "admin");
-                Debug.Log("AMQ connecting to tcp://" + address + ":" + port.ToString());
+                factory = new NMSConnectionFactory(URI);
+                //connection = factory.CreateConnection("admin", "admin");
+                connection = factory.CreateConnection();
+                Debug.Log("AMQ connecting to "+URI);
                 session = connection.CreateSession();
                 networkOpen = true;
                 connection.Start();
@@ -70,11 +71,6 @@ namespace ASAPToolkit.Unity.Middleware {
 
                     if (msg.data.Length > 0) {
                         if (msg.src.Length == 0) {
-                            IMessageProducer producer = session.CreateProducer(SessionUtil.GetDestination(session, defaultWriteTopic));
-                            producer.DeliveryMode = MsgDeliveryMode.NonPersistent;
-                            producer.RequestTimeout = receiveTimeout;
-                            producer.Send(session.CreateTextMessage(msg.data));
-                            Debug.Log("Sending: " + msg.data+ "\n to: "+defaultWriteTopic);
                             defaultProducer.Send(session.CreateTextMessage(msg.data));
                         } else {
                             IMessageProducer producer = session.CreateProducer(SessionUtil.GetDestination(session, msg.src));
