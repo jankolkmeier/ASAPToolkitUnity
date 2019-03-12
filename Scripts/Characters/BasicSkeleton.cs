@@ -24,11 +24,14 @@ namespace ASAPToolkit.Unity.Characters {
         protected Quaternion rootRotation;
         protected Vector3 rootPosition;
 
+        private Transform head;
+
         protected virtual void Awake() {
             rootRotation = transform.rotation;
             rootPosition = transform.position;
             transform.position = Vector3.zero;
             transform.rotation = Quaternion.identity;
+            head = transform; 
             vJoints = null;
         }
 
@@ -76,6 +79,10 @@ namespace ASAPToolkit.Unity.Characters {
             }
         }
 
+        public Transform GetHeadTransform() {
+            return head;
+        }
+
         public VJoint[] GenerateVJoints() {
             if (vJoints != null && vJoints.Length > 0) return vJoints;
             Animator a = GetComponent<Animator>();
@@ -93,6 +100,9 @@ namespace ASAPToolkit.Unity.Characters {
             Dictionary<string, VJoint> lut = new Dictionary<string, VJoint>();
             for (int b = 0; b < rig.boneMap.Length; b++) {
                 Transform bone = rig.boneMap[b].bone;
+                if (rig.boneMap[b].canonicalBoneName == CanonicalRepresentation.HAnimBones.skullbase) {
+                    head = bone;
+                }
                 VJoint parent = null;
                 Vector3 pos = Vector3.zero;
                 Quaternion rot = rig.boneMap[b].CurrentRotationInCanonical();
