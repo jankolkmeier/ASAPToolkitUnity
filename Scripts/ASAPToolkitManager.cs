@@ -25,6 +25,13 @@ namespace ASAPToolkit.Unity {
             if (middleware != null) middleware.Register(this);
         }
 
+        public ASAPAgent GetAgent(string id) {
+            if (agents.ContainsKey(id)) {
+                return agents[id];
+            }
+            return null;
+        }
+
         void Update() {
             if (Time.time > nextWorldUpdate) {
                 UpdateWorld();

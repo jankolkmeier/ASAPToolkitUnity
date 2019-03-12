@@ -164,6 +164,7 @@ namespace ASAPToolkit.Unity {
         void ApplyPose(Quaternion[] poses, Vector3[] rootTransforms);
         void ApplyPose(CanonicalPose pose);
         CanonicalPose ExportPose();
+        Transform GetHeadTransform();
         bool Ready();
     }
 
@@ -223,7 +224,7 @@ namespace ASAPToolkit.Unity {
         void ApplyAgentState();
     }
 
-    public class ASAPAgent : MonoBehaviour, IASAPAgent {
+    public abstract class ASAPAgent : MonoBehaviour, IASAPAgent {
         public string agentId;
         public AgentSpec agentSpec;
         public AgentState agentState;

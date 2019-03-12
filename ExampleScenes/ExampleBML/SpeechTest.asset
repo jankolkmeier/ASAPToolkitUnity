@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090421c4796874a0ca3ab6c367b11028, type: 3}
+  m_Name: SpeechTest
+  m_EditorClassIdentifier: 
+  bmls:
+  - "<bml id=\"bml1\" characterId=\"COUCH_F_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <speech id=\"s1\" start=\"0\">\n
+    \   <text>Error</text>\n    <description priority=\"2\" type=\"application/ssml+xml\">\r\n
+    \     <speak xmlns=\"http://www.w3.org/2001/10/synthesis\">\r\n        <voice
+    required=\"Name=Microsoft Zira Desktop\" />\r\n          Hello there. I am very
+    important<bookmark mark=\"important\"/> and I want to talk.\n      </speak>\r\n
+    \   </description>\n  </speech>\n</bml>"
+  - "<bml id=\"bml2\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <speech id=\"s1\" start=\"bml1:s1:important\">\n
+    \   <text>Error</text>\n    <description priority=\"2\" type=\"application/ssml+xml\">\r\n
+    \     <speak xmlns=\"http://www.w3.org/2001/10/synthesis\">\r\n        <voice
+    required=\"Name=Microsoft Mark\" />\r\n          No. I am more important.\n      </speak>\r\n
+    \   </description>\n  </speech>\n</bml>"

@@ -44,7 +44,7 @@ namespace ASAPToolkit.Unity.Middleware {
                 networkOpen = true;
                 connection.Start();
             } catch (System.Exception e) {
-                Debug.Log("AMQ Start Exception " + e);
+                Debug.LogWarning("AMQ Start Exception " + e);
             }
 
             amqWriterThread = new Thread(new ThreadStart(AMQWriter));
@@ -81,7 +81,7 @@ namespace ASAPToolkit.Unity.Middleware {
                     }
                 }
             } catch (System.Exception e) {
-                Debug.Log("AMQWriter Exception " + e);
+                Debug.LogWarning("AMQWriter Exception " + e);
             }
         }
 
