@@ -58,6 +58,7 @@ namespace ASAPToolkit.Unity.Characters {
 
         public CanonicalRepresentation.HAnimBones[] GetAnimatedCanonicalBones(AnimationClip clip) {
             List<CanonicalRepresentation.HAnimBones> res = new List<CanonicalRepresentation.HAnimBones>();
+#if UNITY_EDITOR
             foreach (UnityEditor.EditorCurveBinding binding in UnityEditor.AnimationUtility.GetCurveBindings(clip)) {
                 //AnimationCurve curve = AnimationUtility.GetEditorCurve (clip, binding);
                 string[] pathElems = binding.path.Split('/');
@@ -73,6 +74,7 @@ namespace ASAPToolkit.Unity.Characters {
                 // Translation bones...
                 //}
             }
+#endif
             return res.ToArray();
         }
 
