@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: BorgDebug2
   m_EditorClassIdentifier: 
   bmls:
-  - "<bml id=\"bml1\" characterId=\"COUCH_F_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
-    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<gazeShift id=\"gs1\" target=\"head_COUCH_M_1\"
-    \ influence=\"NECK\" start=\"0\" end=\"1\" />\n</bml>"
+  - "<bml characterId=\"COUCH_F_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \ id=\"bml1\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\" xmlns:bmla=\"http://www.asap-project.org/bmla\">\r\n
+    \ <bmlt:blinkemitter id=\"blinkemitter1\" start=\"0\" range=\"0.5\" avgwaitingtime=\"2\"/>
+    \ \r\n</bml>"

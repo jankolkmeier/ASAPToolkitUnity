@@ -187,10 +187,41 @@ MonoBehaviour:
   extraBones:
   - hanim_bone: 113
     parent_src_bone: Toes_L
+    bone_name: 
     localPosition: {x: -0.025, y: 0, z: 0}
+    localEulerRotation: {x: 0, y: 0, z: 0}
   - hanim_bone: 114
     parent_src_bone: Toes_R
+    bone_name: 
     localPosition: {x: -0.025, y: 0, z: 0}
+    localEulerRotation: {x: 0, y: 0, z: 0}
   - hanim_bone: 38
     parent_src_bone: Head
+    bone_name: 
     localPosition: {x: -0.2, y: 0, z: 0}
+    localEulerRotation: {x: 0, y: 0, z: 0}
+  - hanim_bone: 115
+    parent_src_bone: Position
+    bone_name: __r_foot_target
+    localPosition: {x: 0.15, y: 0.08, z: 0.3}
+    localEulerRotation: {x: 0, y: 0, z: 0}
+  - hanim_bone: 115
+    parent_src_bone: Position
+    bone_name: __l_foot_target
+    localPosition: {x: -0.15, y: 0.08, z: 0.3}
+    localEulerRotation: {x: 0, y: 0, z: 0}
+  - hanim_bone: 115
+    parent_src_bone: Thigh_L
+    bone_name: __l_hand_target
+    localPosition: {x: -0.05, y: -0.14, z: 0.12}
+    localEulerRotation: {x: 0, y: 0, z: 0}
+  - hanim_bone: 115
+    parent_src_bone: Position
+    bone_name: __root_target
+    localPosition: {x: 0, y: 0.55, z: 0}
+    localEulerRotation: {x: 0, y: 0, z: 0}
+  - hanim_bone: 115
+    parent_src_bone: Thigh_R
+    bone_name: __r_hand_target
+    localPosition: {x: 0.07, y: -0.17, z: 0.12}
+    localEulerRotation: {x: 0, y: 0, z: 0}

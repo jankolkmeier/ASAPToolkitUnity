@@ -88,7 +88,29 @@ namespace ASAPToolkit.Unity.Characters {
             Animator a = GetComponent<Animator>();
             if (a != null) a.enabled = false;
             StoredPoseAsset.ApplyPose(aPose.pose, transform);
-            rig = new CanonicalRig(transform, boneMap.mappings);
+            List<BoneMapAsset.HAnimBoneMapping> mergedMap = new List<BoneMapAsset.HAnimBoneMapping>();
+            foreach (BoneMapAsset.HAnimBoneMapping m in boneMap.mappings) {
+                mergedMap.Add(m);
+            }
+            foreach (BoneMapAsset.ExtraBone eb in boneMap.extraBones) {
+                string bone_name = eb.hanim_bone.ToString();
+                if (eb.hanim_bone == CanonicalRepresentation.HAnimBones.NONE) {
+                    bone_name = eb.bone_name;
+                }
+                Transform ebTransform = transform.FindChildRecursive(bone_name);
+                Transform ebParentTransform = transform.FindChildRecursive(eb.parent_src_bone);
+                if (ebTransform == null && ebParentTransform != null) {
+                    ebTransform = (new GameObject(bone_name)).transform;
+                    ebTransform.SetParent(ebParentTransform);
+                    ebTransform.position = ebParentTransform.position+eb.localPosition;
+                    ebTransform.localRotation = Quaternion.Euler(eb.localEulerRotation.x, eb.localEulerRotation.y, eb.localEulerRotation.z);
+                }
+                BoneMapAsset.HAnimBoneMapping newMap;
+                newMap.hanim_bone = eb.hanim_bone;
+                newMap.src_bone = bone_name;
+                mergedMap.Add(newMap);
+            }
+            rig = new CanonicalRig(transform, mergedMap.ToArray());
 
             if (rig.boneMap == null) {
                 _ready = false;
@@ -96,6 +118,7 @@ namespace ASAPToolkit.Unity.Characters {
                 Debug.LogError("Failed to create CanonicalRig");
                 return null;
             }
+
             VJoint[] res = new VJoint[rig.boneMap.Length];
             Dictionary<string, VJoint> lut = new Dictionary<string, VJoint>();
             for (int b = 0; b < rig.boneMap.Length; b++) {
