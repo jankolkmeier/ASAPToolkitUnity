@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: MURMLTest
   m_EditorClassIdentifier: 
   bmls:
-  - "<bml characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
-    \ id=\"bml1\" > \r\n<gazeShift id=\"g1\" target=\"camera\" start=\"0\" end=\"1\"
-    influence=\"NECK\" />\n</bml>"
-  - "<bml characterId=\"COUCH_M_1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
-    \ id=\"bml2\" > \r\n<gazeShift id=\"g1\" target=\"f1\" start=\"bml1:g1:end+2\"
-    end=\"bml1:g1:end+3\" influence=\"NECK\" />\n</bml>"
+  - "<bml xmlns:bmla=\"http://www.asap-project.org/bmla\"\n        xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\"\n
+    \       xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"\n        id=\"CTRL_1\"
+    characterId=\"COUCH_M_2\" composition=\"MERGE\">\r\n<bmlt:noise id=\"ctrlNoise1\"
+    type=\"perlin\" joint=\"vt10\" start=\"0\" end=\"10000\">\r\n  <bmlt:parameter
+    name=\"basefreqx\" value=\"0.3\"/>\r\n  <bmlt:parameter name=\"baseamplitudex\"
+    value=\"1\"/>\r\n  <bmlt:parameter name=\"basefreqy\" value=\"0.3\"/>\r\n  <bmlt:parameter
+    name=\"baseamplitudey\" value=\"0.1\"/>\r\n  <bmlt:parameter name=\"basefreqz\"
+    value=\"0.3\"/>\r\n  <bmlt:parameter name=\"baseamplitudez\" value=\"0.1\"/>\r\n</bmlt:noise>\r\n</bml>"

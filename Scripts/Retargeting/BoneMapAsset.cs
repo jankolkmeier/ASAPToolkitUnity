@@ -17,7 +17,9 @@ namespace ASAPToolkit.Unity.Retargeting {
         public struct ExtraBone {
             public CanonicalRepresentation.HAnimBones hanim_bone;
             public string parent_src_bone;
+            public string bone_name;
             public Vector3 localPosition;
+            public Vector3 localEulerRotation;
         }
 
         public HAnimBoneMapping[] mappings;
