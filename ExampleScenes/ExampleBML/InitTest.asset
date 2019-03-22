@@ -19,20 +19,20 @@ MonoBehaviour:
   - "<bml xmlns:bmla=\"http://www.asap-project.org/bmla\"\r\n        xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\"\r\n
     \       xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"\r\n        id=\"CTRL01\"
     characterId=\"COUCH_M_2\" composition=\"MERGE\">\r\n<bmlt:noise id=\"ctrlNoise1\"
-    type=\"perlin\" joint=\"vl5\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
+    type=\"additiveperlin\" joint=\"vl5\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
     name=\"offsetx\" value=\"0.03\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.07\"/>\r\n
     \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.1\"/>\r\n  <bmlt:parameter
     name=\"basefreqy\" value=\"0.05\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
     value=\"0.05\"/>\r\n  <bmlt:parameter name=\"offsetz\" value=\"-0.1\"/>\r\n  <bmlt:parameter
     name=\"basefreqz\" value=\"0.3\"/>\r\n  <bmlt:parameter name=\"baseamplitudez\"
-    value=\"0.08\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise1\" type=\"perlin\"
+    value=\"0.08\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise2\" type=\"additiveperlin\"
     joint=\"vt10\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter name=\"offsetx\"
     value=\"0.03\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.05\"/>\r\n
     \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.2\"/>\r\n  <bmlt:parameter
     name=\"basefreqy\" value=\"0.22\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
     value=\"0.1\"/>\r\n  <bmlt:parameter name=\"basefreqz\" value=\"0.35\"/>\r\n  <bmlt:parameter
-    name=\"baseamplitudez\" value=\"0.02\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise1\"
-    type=\"perlin\" joint=\"vt1\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
+    name=\"baseamplitudez\" value=\"0.02\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise3\"
+    type=\"additiveperlin\" joint=\"vt1\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
     name=\"offsetx\" value=\"0.02\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.12\"/>\r\n
     \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.1\"/>\r\n  <bmlt:parameter
     name=\"basefreqy\" value=\"0.05\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
@@ -43,4 +43,4 @@ MonoBehaviour:
     influence=\"NECK\" target=\"camera\" start=\"POSE_1:pose1:end+0.2\" />\r\n</bml>"
   - "\r<bml id=\"HEAD_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
     \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\r\n<head id=\"h1\" lexeme=\"NOD\"
-    amount=\"0.005\" repetition=\"3\" start=\"5\" />\r\n</bml>"
+    amount=\"0.005\" repetition=\"4\" start=\"5\" end=\"5.5\" />\r\n</bml>"

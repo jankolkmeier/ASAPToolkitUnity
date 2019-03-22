@@ -108,6 +108,8 @@ namespace ASAPToolkit.Unity.Editor {
 
                 GUILayout.BeginHorizontal();
                 //bmlProp.stringValue = GUILayout.TextArea(bmlProp.stringValue, GUILayout.ExpandHeight(true));
+
+                EditorStyles.textField.wordWrap = true;
                 bmlProp.stringValue = EditorGUILayout.TextArea(bmlProp.stringValue, GUILayout.ExpandHeight(true));
                 if (GUILayout.Button("X", delStyle, GUILayout.Width(20.0f), GUILayout.ExpandHeight(true))) {
                     bmls.DeleteArrayElementAtIndex(i);
