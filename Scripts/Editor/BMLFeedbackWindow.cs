@@ -193,21 +193,25 @@ namespace ASAPToolkit.Unity.Editor {
 
         void OnBlockProgress(BlockProgress blockProgress) {
             listBlock.Insert(0, blockProgress.raw);
+            while (listBlock.Count > 32) listBlock.RemoveAt(listBlock.Count - 1);
             Repaint();
         }
 
         void OnPredictionFeedback(PredictionFeedback predictionFeedback) {
             listPrediction.Insert(0, predictionFeedback.raw);
+            while (listPrediction.Count > 32) listPrediction.RemoveAt(listPrediction.Count - 1);
             Repaint();
         }
 
         void OnSyncPointProgress(SyncPointProgress syncPointProgress) {
             listSyncPoint.Insert(0, syncPointProgress.raw);
+            while (listSyncPoint.Count > 32) listSyncPoint.RemoveAt(listSyncPoint.Count - 1);
             Repaint();
         }
 
         void OnWarningFeedback(WarningFeedback warningFeedback) {
             listWarning.Insert(0, warningFeedback.raw);
+            while (listWarning.Count > 32) listWarning.RemoveAt(listWarning.Count - 1);
             Repaint();
         }
 
