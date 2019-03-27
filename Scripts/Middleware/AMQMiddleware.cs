@@ -27,7 +27,7 @@ namespace ASAPToolkit.Unity.Middleware {
         System.TimeSpan receiveTimeout = System.TimeSpan.FromMilliseconds(250);
         AutoResetEvent semaphore = new AutoResetEvent(false);
 
-        void Awake() {
+        void Start() {
             AMQStart();
         }
 

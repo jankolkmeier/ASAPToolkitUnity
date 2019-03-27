@@ -33,7 +33,7 @@ namespace ASAPToolkit.Unity.Middleware {
         System.TimeSpan receiveTimeout = System.TimeSpan.FromMilliseconds(250);
 #endif
 
-        public void Awake() {
+        public void Start() {
 #if !UNITY_EDITOR && UNITY_METRO
         throw new System.NotImplementedException();
 #else

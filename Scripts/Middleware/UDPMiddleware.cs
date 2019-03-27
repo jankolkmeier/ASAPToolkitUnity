@@ -35,7 +35,7 @@ namespace ASAPToolkit.Unity.Middleware {
         private Thread sendThread;
 #endif
 
-        public void Awake() {
+        public void Start() {
             _listening = false;
 #if !UNITY_EDITOR && UNITY_METRO
         Task.Run(() => DataSender());
