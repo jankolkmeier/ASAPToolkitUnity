@@ -195,11 +195,6 @@ MonoBehaviour:
     bone_name: 
     localPosition: {x: -0.025, y: 0, z: 0}
     localEulerRotation: {x: 0, y: 0, z: 0}
-  - hanim_bone: 38
-    parent_src_bone: Head
-    bone_name: 
-    localPosition: {x: -0.2, y: 0, z: 0}
-    localEulerRotation: {x: 0, y: 0, z: 0}
   - hanim_bone: 115
     parent_src_bone: Position
     bone_name: __r_foot_target
