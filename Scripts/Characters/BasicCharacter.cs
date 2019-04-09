@@ -1,8 +1,6 @@
 using UnityEngine;
 using ASAPToolkit.Unity.Retargeting;
 
-using UnityEditor;
-
 namespace ASAPToolkit.Unity.Characters {
 
     public class BasicCharacter : ASAPAgent {
