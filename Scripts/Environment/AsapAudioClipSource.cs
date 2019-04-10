@@ -33,6 +33,9 @@ namespace ASAPToolkit.Unity.Environment {
                     }
                 } else {
                     Debug.Log("agent null");
+                    // NOTE: this disables the audio if the agent is not known.
+                    // HOWEVER: this will also mute the audio, if we play a WAV using the audioengine...
+                    this.audioSource.mute = true;
                 }
             } else {
                 Debug.Log("source null");
