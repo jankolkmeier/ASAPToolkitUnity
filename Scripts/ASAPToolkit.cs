@@ -17,7 +17,8 @@ namespace ASAPToolkit.Unity {
     [System.Serializable]
     public class SubtitlesMessage : AsapMessage {
         public string cmd;
-        public string content;
+        public string progress;
+        public string complete;
     }
 
     [System.Serializable]
@@ -278,7 +279,8 @@ namespace ASAPToolkit.Unity {
         public const string MSGTYPE_SUBTITLES = "subtitles";
         public const string SUBTITLES_SHOW = "ShowSubtitle";
         public const string SUBTITLES_HIDE = "HideSubtitle";
-        public const string SUBTITLES_CONTENT = "content";
+        public const string SUBTITLES_PROGRESS = "progress";
+        public const string SUBTITLES_COMPLETE = "complete";
 
 
     }

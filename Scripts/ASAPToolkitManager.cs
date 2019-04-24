@@ -144,7 +144,7 @@ namespace ASAPToolkit.Unity {
                         break;
                     }
                     if (sm.cmd == AUPROT.SUBTITLES_SHOW) {
-                        cs.ShowSubtitles(sm.content);
+                        cs.ShowSubtitles(sm.complete, sm.progress.Length);
                     } else if (sm.cmd == AUPROT.SUBTITLES_HIDE) {
                         cs.HideSubtitles();
                     }
