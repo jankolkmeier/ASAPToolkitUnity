@@ -165,8 +165,8 @@ namespace ASAPToolkit.Unity.Middleware {
         private void DataListener() {
             IPEndPoint localEndpoint = new IPEndPoint(IPAddress.Any, 0);
             udpClient = new UdpClient(localEndpoint);
-            udpClient.Client.ReceiveBufferSize = 65507;
-            udpClient.Client.SendBufferSize = 65507;
+            udpClient.Client.ReceiveBufferSize = 65507 * 32;
+            udpClient.Client.SendBufferSize = 65507 * 32;
             int listenPort = ((IPEndPoint)udpClient.Client.LocalEndPoint).Port;
             _listening = true;
             Debug.Log("Client listening on " + listenPort);

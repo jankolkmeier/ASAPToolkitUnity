@@ -9,11 +9,13 @@ namespace ASAPToolkit.Unity.Characters {
         public Text text;
 
         public void ShowSubtitles(string content) {
+            if (text == null) return;
             text.gameObject.SetActive(true);
             text.text = content;
         }
 
         public void HideSubtitles() {
+            if (text == null) return;
             text.gameObject.SetActive(false);
         }
 

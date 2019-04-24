@@ -139,10 +139,8 @@ namespace ASAPToolkit.Unity {
                 case AUPROT.MSGTYPE_SUBTITLES:
                     if (!agents.ContainsKey(asapMessage.agentId)) break;
                     SubtitlesMessage sm = JsonUtility.FromJson<SubtitlesMessage>(msg.data);
-                    Debug.Log("Subtitles message for: " + sm.agentId + " (" + sm.cmd + ", "+sm.content+ ")");
                     CharacterSubtitles cs = agents[sm.agentId].GetComponent<CharacterSubtitles>();
                     if (cs == null) {
-                        Debug.LogWarning("Got subtitles, but agent " + sm.agentId + " does not have a CharacterSubtitles component ");
                         break;
                     }
                     if (sm.cmd == AUPROT.SUBTITLES_SHOW) {
