@@ -10,11 +10,17 @@ namespace ASAPToolkit.Unity.Environment {
         private string source;
         private string clipId;
 
-        public void Setup(string source, string clipId, AudioClip clip) {
+        public bool[] partsReceived;
+
+        public void Setup(string source, string clipId, AudioClip clip, int nParts) {
             this.source = source;
             this.clipId = clipId;
             this.audioSource = gameObject.AddComponent<AudioSource>();
+            this.audioSource.minDistance = 0.25f;
+            this.audioSource.maxDistance = 10f;
+            this.audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
             this.audioSource.clip = clip;
+            this.partsReceived = new bool[nParts];
             if (source.Length > 0) {
                 ASAPToolkitManager atm = FindObjectOfType<ASAPToolkitManager>();
                 ASAPAgent agent = atm.GetAgent(source);
@@ -27,6 +33,9 @@ namespace ASAPToolkit.Unity.Environment {
                     }
                 } else {
                     Debug.Log("agent null");
+                    // NOTE: this disables the audio if the agent is not known.
+                    // HOWEVER: this will also mute the audio, if we play a WAV using the audioengine...
+                    this.audioSource.mute = true;
                 }
             } else {
                 Debug.Log("source null");

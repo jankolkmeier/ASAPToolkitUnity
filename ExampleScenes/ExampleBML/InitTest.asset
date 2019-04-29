@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090421c4796874a0ca3ab6c367b11028, type: 3}
+  m_Name: InitTest
+  m_EditorClassIdentifier: 
+  bmls:
+  - "<bml id=\"POSE_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\" composition=\"REPLACE\">\r\n<postureShift
+    id=\"pose1\" start=\"0\" end=\"1\">\r\n  <stance type=\"SITTING\"/>\r\n  <pose
+    part=\"WHOLEBODY\" lexeme=\"IKSIT\"/>\r\n</postureShift>\r\n</bml>\r"
+  - "<bml xmlns:bmla=\"http://www.asap-project.org/bmla\"\r\n        xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\"\r\n
+    \       xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"\r\n        id=\"CTRL01\"
+    characterId=\"COUCH_M_2\" composition=\"MERGE\">\r\n<bmlt:noise id=\"ctrlNoise1\"
+    type=\"additiveperlin\" joint=\"vl5\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
+    name=\"offsetx\" value=\"0.03\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.07\"/>\r\n
+    \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.1\"/>\r\n  <bmlt:parameter
+    name=\"basefreqy\" value=\"0.05\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
+    value=\"0.05\"/>\r\n  <bmlt:parameter name=\"offsetz\" value=\"-0.1\"/>\r\n  <bmlt:parameter
+    name=\"basefreqz\" value=\"0.3\"/>\r\n  <bmlt:parameter name=\"baseamplitudez\"
+    value=\"0.08\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise2\" type=\"additiveperlin\"
+    joint=\"vt10\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter name=\"offsetx\"
+    value=\"0.03\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.05\"/>\r\n
+    \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.2\"/>\r\n  <bmlt:parameter
+    name=\"basefreqy\" value=\"0.22\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
+    value=\"0.1\"/>\r\n  <bmlt:parameter name=\"basefreqz\" value=\"0.35\"/>\r\n  <bmlt:parameter
+    name=\"baseamplitudez\" value=\"0.02\"/>\r\n</bmlt:noise>\r\n<bmlt:noise id=\"ctrlNoise3\"
+    type=\"additiveperlin\" joint=\"vt1\" start=\"1\" end=\"10000\">\r\n  <bmlt:parameter
+    name=\"offsetx\" value=\"0.02\"/>\r\n  <bmlt:parameter name=\"basefreqx\" value=\"0.12\"/>\r\n
+    \ <bmlt:parameter name=\"baseamplitudex\" value=\"0.1\"/>\r\n  <bmlt:parameter
+    name=\"basefreqy\" value=\"0.05\"/>\r\n  <bmlt:parameter name=\"baseamplitudey\"
+    value=\"0.05\"/>\r\n  <bmlt:parameter name=\"basefreqz\" value=\"0.3\"/>\r\n  <bmlt:parameter
+    name=\"baseamplitudez\" value=\"0.08\"/>\r\n</bmlt:noise>\r\n</bml>"
+  - "<bml id=\"GAZE_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\r\n<gazeShift id=\"gaze1\"
+    influence=\"NECK\" target=\"camera\" start=\"POSE_1:pose1:end+0.2\" />\r\n</bml>"
+  - "\r<bml id=\"HEAD_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\r\n<head id=\"h1\" lexeme=\"NOD\"
+    amount=\"0.005\" repetition=\"4\" start=\"5\" end=\"5.5\" />\r\n</bml>"

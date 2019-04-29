@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090421c4796874a0ca3ab6c367b11028, type: 3}
+  m_Name: ShiftTest
+  m_EditorClassIdentifier: 
+  bmls:
+  - "<bml id=\"POSE_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\" composition=\"MERGE\">\r\n<postureShift
+    id=\"pose1\" start=\"0\" end=\"0.6\">\r\n  <stance type=\"SITTING\"/>\r\n  <pose
+    part=\"WHOLEBODY\" lexeme=\"IKSIT\"/>\r\n</postureShift>\r\n</bml>\r"
+  - "<bml id=\"GAZE_1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\r\n<gazeShift id=\"gaze1\"
+    influence=\"NECK\" target=\"camera\" start=\"POSE_1:pose1:end+0.2\" end=\"POSE_1:pose1:end+1.2\"
+    />\r\n</bml>"
+  - "<bml id=\"bml1\" characterId=\"COUCH_M_2\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \r\n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\r\n<gesture id=\"g1\" lexeme=\"M_I2_2\"
+    mode=\"BOTH_HANDS\" start=\"POSE_1:pose1:end+5\" />\r\n</bml>"

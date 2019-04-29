@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using ASAPToolkit.Unity.Middleware;
+using ASAPToolkit.Unity.Characters;
 
 namespace ASAPToolkit.Unity {
 
     public class ASAPToolkitManager : MonoBehaviour, IMiddlewareListener {
 
+        public bool slave = false;
         public int worldUpdateFrequency = 15;
 
         private float nextWorldUpdate = 0.0f;
@@ -133,6 +135,21 @@ namespace ASAPToolkit.Unity {
                     } else {
                         Debug.LogWarning("Can't update state for unknown agent: " + asapMessage.agentId);
                     }
+                    break;
+                case AUPROT.MSGTYPE_SUBTITLES:
+                    if (!agents.ContainsKey(asapMessage.agentId)) break;
+                    SubtitlesMessage sm = JsonUtility.FromJson<SubtitlesMessage>(msg.data);
+                    CharacterSubtitles cs = agents[sm.agentId].GetComponent<CharacterSubtitles>();
+                    if (cs == null) {
+                        break;
+                    }
+                    if (sm.cmd == AUPROT.SUBTITLES_SHOW) {
+                        cs.ShowSubtitles(sm.complete, sm.progress.Length);
+                    } else if (sm.cmd == AUPROT.SUBTITLES_HIDE) {
+                        cs.HideSubtitles();
+                    }
+                    // get agentid, search CharacterSubtitles on agentid gameobject
+                    // set command
                     break;
                 default:
                     break;
