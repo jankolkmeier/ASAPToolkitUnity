@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090421c4796874a0ca3ab6c367b11028, type: 3}
+  m_Name: BlueGuyExample
+  m_EditorClassIdentifier: 
+  bmls:
+  - "<bml id=\"bml0\" characterId=\"BlueGuy\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\" composition=\"REPLACE\">\n  <speech
+    id=\"s1\" start=\"1\">\n    <text>Hi there. I am looking at the red sphere now<sync
+    id=\"sync1\" />.</text>\n  </speech>\n</bml>"
+  - "<bml id=\"bml1\" characterId=\"\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <gesture id=\"g1\" lexeme=\"wave\"
+    start=\"bml0:s1:start\"/>  \n</bml>"
+  - "<bml id=\"bml1\" characterId=\"\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <gaze id=\"gaze1\" bmlt:dynamic=\"true\"
+    ready=\"bml0:s1:sync1\" relax=\"bml0:s1:sync1+2\" influence=\"NECK\" target=\"redsphere\"/>\n</bml>"
+  - "<bml id=\"bml2\" characterId=\"BlueGuy\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <speech id=\"s1\" start=\"bml0:s1:end+2\">\n
+    \   <text>Oh, look<sync id=\"sync1\" />, a blue box!</text>\n  </speech>\n</bml>"
+  - "<bml id=\"bml3\" characterId=\"BlueGuy\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n  <gaze id=\"gaze1\" bmlt:dynamic=\"true\"
+    ready=\"bml2:s1:sync1\" relax=\"bml0:s1:end+5\" influence=\"NECK\" target=\"bluebox\"/>\n</bml>"
+  - "<bml id=\"bml4\" characterId=\"BlueGuy\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"
+    \n  xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">\n<pointing id=\"p1\" target=\"bluebox\"
+    mode=\"RIGHT_HAND\" start=\"bml2:s1:start\" ready=\"bml2:s1:sync1\" relax=\"bml2:s1:end\"/>
+    \   \n</bml>"
