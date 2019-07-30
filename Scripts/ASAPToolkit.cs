@@ -15,6 +15,13 @@ namespace ASAPToolkit.Unity {
     }
 
     [System.Serializable]
+    public class SubtitlesMessage : AsapMessage {
+        public string cmd;
+        public string progress;
+        public string complete;
+    }
+
+    [System.Serializable]
     public class AgentSpec : AsapMessage {
         public int nBones;
         public int nFaceTargets;
@@ -243,6 +250,7 @@ namespace ASAPToolkit.Unity {
     public static class AUPROT {
         public const string PROP_MSGTYPE = "msgType";
         public const string PROP_AGENTID = "agentId";
+        public const string PROP_CMD = "cmd";
         public const string PROP_SOURCE = "source";
         public const string PROP_N_BONES = "nBones";
         public const string PROP_N_FACETARGETS = "nFaceTargets";
@@ -266,5 +274,14 @@ namespace ASAPToolkit.Unity {
         public const string MSGTYPE_AGENTSPEC = "AgentSpec";
         public const string MSGTYPE_AGENTSTATE = "AgentState";
         public const string MSGTYPE_WORLDOBJECTUPDATE = "WorldObjectUpdate";
+
+        // subtitles..
+        public const string MSGTYPE_SUBTITLES = "subtitles";
+        public const string SUBTITLES_SHOW = "ShowSubtitle";
+        public const string SUBTITLES_HIDE = "HideSubtitle";
+        public const string SUBTITLES_PROGRESS = "progress";
+        public const string SUBTITLES_COMPLETE = "complete";
+
+
     }
 }

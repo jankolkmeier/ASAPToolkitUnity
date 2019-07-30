@@ -83,8 +83,13 @@ namespace ASAPToolkit.Unity.Editor {
             SerializedProperty bmls = serializedObj.FindProperty("bmls");
 
             if (GUILayout.Button("SEND ALL", sndStyle, GUILayout.Height(19.0f))) {
-                for (int i = 0; i < testBmlAsset.bmls.Length; i++) {
-                    FindObjectOfType<BML.BMLRequests>().SendBML(testBmlAsset.bmls[i]);
+                BML.BMLRequests bmlreq = FindObjectOfType<BML.BMLRequests>();
+                if (bmlreq == null) {
+                    Debug.LogWarning("No BMLRequests behaviour in scene");
+                } else { 
+                    for (int i = 0; i < testBmlAsset.bmls.Length; i++) {
+                        bmlreq.SendBML(testBmlAsset.bmls[i]);
+                    }
                 }
             }
             GUILayout.FlexibleSpace();
