@@ -9,13 +9,19 @@ using System.Linq;
 namespace ASAPToolkit.Unity.Retargeting {
 
     [RequireComponent(typeof(BasicSkeleton))]
-    public class ApplyCanonicalPose : MonoBehaviour {
+    public class ApplyCanonicalPose : MonoBehaviour, IPriorityApply {
 
         public BasicSkeleton poseSource;
         private BasicSkeleton poseTarget;
 
+        public int priority = 0;
+
         public AvatarMask boneMask;
         CanonicalRepresentation.HAnimBones[] bones = null;
+
+        public int GetPriority() {
+            return priority;
+        }
 
         void Start() {
             poseTarget = GetComponent<BasicSkeleton>();
