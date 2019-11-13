@@ -40,6 +40,7 @@ namespace ASAPToolkit.Unity.Characters {
         public CanonicalPoseClip ExportClip(AnimationClip clip, int fps) {
 			List<CanonicalPose> _frames = new List<CanonicalPose>();
 			float delta = 1.0f / (float)fps;
+            IPriorityApply[] appliers = (GetComponents<IPriorityApply>()).OrderByDescending(a => a.GetPriority()).ToArray();
 			for (int frame = 0; frame < Mathf.Max(1f, clip.length * fps); frame++) {
 				float t = delta * frame;
 				if (ikDrivingAnimator == null) {
@@ -48,7 +49,9 @@ namespace ASAPToolkit.Unity.Characters {
 					//if (fbbik_head != null) fbbik_head.;
 					clip.SampleAnimation(ikDrivingAnimator.gameObject, t);
 				}
-				SendMessage("Apply");
+                foreach (IPriorityApply a in appliers) {
+                    a.Apply();
+                }
 				CanonicalPose p = ExportPose();
 				p.timestamp = t;
 				_frames.Add(p);
