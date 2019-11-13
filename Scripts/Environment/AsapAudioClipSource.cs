@@ -12,7 +12,7 @@ namespace ASAPToolkit.Unity.Environment {
 
         public bool[] partsReceived;
 
-        public void Setup(string source, string clipId, AudioClip clip, int nParts) {
+        public void Setup(string source, bool onlyActiveAgentClips, string clipId, AudioClip clip, int nParts) {
             this.source = source;
             this.clipId = clipId;
             this.audioSource = gameObject.AddComponent<AudioSource>();
@@ -28,18 +28,11 @@ namespace ASAPToolkit.Unity.Environment {
                     ICharacterSkeleton icskel = agent.GetComponent<ICharacterSkeleton>();
                     if (icskel != null) {
                         transform.position = icskel.GetHeadTransform().position;
-                    } else {
-                        Debug.Log("icskel null");
-                    }
-                } else {
-                    Debug.Log("agent null");
-                    // NOTE: this disables the audio if the agent is not known.
-                    // HOWEVER: this will also mute the audio, if we play a WAV using the audioengine...
+                    } 
+                } else if (onlyActiveAgentClips) {
                     this.audioSource.mute = true;
                 }
-            } else {
-                Debug.Log("source null");
-            }
+            } 
         }
 
         public void Play(double relTime) {

@@ -11,6 +11,8 @@ namespace ASAPToolkit.Unity.Environment {
     [RequireComponent(typeof(IMiddleware))]
     public class AudioStreamingReceiver : MonoBehaviour, IMiddlewareListener {
 
+        [Tooltip("Only play audio from agents that are active in this scene. Note that this will also disable non-agent audio.")]
+        public bool onlyActiveAgentClips = false;
 
         Dictionary<string, AsapAudioClipSource> clipLib;
 
@@ -24,6 +26,8 @@ namespace ASAPToolkit.Unity.Environment {
                 Debug.LogWarning("Failed to parse incomming StreamingClipJSON to JSON: " + msg.data + "\n\n" + e);
                 return;
             }
+
+            //Debug.Log("AUDIO DATA "+audioStreamMsg.msgType+" "+msg.data.Length);
 
             if (audioStreamMsg.msgType == "DATA") {
                 StreamingClipDataJSON audioStreamDataMsg;
@@ -102,7 +106,7 @@ namespace ASAPToolkit.Unity.Environment {
                 float frequency = msg.audioFormat.sampleRate;
                 AsapAudioClipSource asco = (new GameObject(msg.clipId)).AddComponent<AsapAudioClipSource>();
                 asco.transform.SetParent(transform);
-                asco.Setup(msg.source, msg.clipId, AudioClip.Create(msg.clipId, lengthSamples, channels, (int)frequency, false), msg.partOffsets.Length);
+                asco.Setup(msg.source, onlyActiveAgentClips, msg.clipId, AudioClip.Create(msg.clipId, lengthSamples, channels, (int)frequency, false), msg.partOffsets.Length);
                 clipLib.Add(msg.clipId, asco);
             }
 
