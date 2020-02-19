@@ -91,6 +91,21 @@ namespace ASAPToolkit.Unity.Characters {
             vJoints = GenerateVJoints();
             AddDefaultTargets(umaData);
             _ready = vJoints != null;
+            EnableUpdateWhenOffScreen(umaData);
+        }
+
+        /// <summary>
+        /// There is an issue with UMARenderer's SkinnedMeshRenderer Bounds location not being updated correctly when the agent is repositioned. 
+        /// This causes the problem that the agent is not rendered when the camera thinks the agent is out of view, although actually it is still in view.
+        /// As a workaround we enable the property <c>updateWhenOffScreen</c> for each of the agent's renderers to ensure it never vanishes, even when the camera thinks it's offscreen
+        /// TODO: try to figure out why the bounds are not updated after the agent is generated and moved to a different position...
+        /// </summary>
+        public void EnableUpdateWhenOffScreen(UMAData umaData)
+        {
+            foreach (SkinnedMeshRenderer smr in umaData.GetRenderers())
+            {
+                smr.updateWhenOffscreen = true;
+            }
         }
 
         public void AddDefaultTargets(UMAData umaData) {
