@@ -201,7 +201,7 @@ namespace ASAPToolkit.Unity.Middleware {
                         _receiveQueue.Enqueue(msg);
                     }
                 }
-                catch (Exception e)
+                catch (SocketException e)
                 {
                     //OK, since this was a bitch to figure out, here is some documentation for what is going on, and why we encounter exceptions when receiving data
 
