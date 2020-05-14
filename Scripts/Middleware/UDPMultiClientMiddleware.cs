@@ -178,21 +178,52 @@ namespace ASAPToolkit.Unity.Middleware {
     }
 #else
         private void DataListener() {
+            
             IPEndPoint localEndpoint = new IPEndPoint(IPAddress.Any, 0);
             udpClient = new UdpClient(localEndpoint);
             udpClient.Client.ReceiveBufferSize = 65507 * 32;
             udpClient.Client.SendBufferSize = 65507 * 32;
+            IPAddress listenIP = ((IPEndPoint)udpClient.Client.LocalEndPoint).Address;
             int listenPort = ((IPEndPoint)udpClient.Client.LocalEndPoint).Port;
-            _listening = true;
-            Debug.Log("Client listening on " + listenPort);
 
-            while (_running) {
-                byte[] buffer = udpClient.Receive(ref localEndpoint);
-                lock (_receiveQueueLock) {
-                    _receiveQueue.Enqueue(new MSG(Encoding.ASCII.GetString(buffer)));
+            _listening = true;
+            Debug.Log("Client listening on " + listenIP.ToString() + ":" + listenPort);
+
+            while (_running)
+            {
+                try
+                {
+                    byte[] buffer = udpClient.Receive(ref localEndpoint);//this is the evil bastard that crashes on an ICMP message 
+                    String data = Encoding.ASCII.GetString(buffer);
+                    MSG msg = new MSG(data);
+                    lock (_receiveQueueLock)
+                    {
+                        _receiveQueue.Enqueue(msg);
+                    }
                 }
+                catch (Exception e)
+                {
+                    //OK, since this was a bitch to figure out, here is some documentation for what is going on, and why we encounter exceptions when receiving data
+
+                    //Context: The way our multi-client-udp-middleware works: packets are sent from Client A from any available (random) port to the predefined port of Client B. 
+                    //Client B then looks at the packet's originating (random) port that A used to send the packet and adds Client A to the list of clients to broadcast outgoing packets to.
+                    //When sending packets back from B to A, it will now use the (random) port as its destination.
+                    //As a consequence, here in Unity we must send and receive data with the same UdpClient using the same port.
+
+                    //However, on some windows machines sending data to a port where there is no listener results in an ICMP response WSAECONNRESET 
+                    //E.g. see here: https://stackoverflow.com/questions/7201862/an-existing-connection-was-forcibly-closed-by-the-remote-host
+                    //(This situation can occur if Unity is started before e.g. ASAP is running; in that case there is nobody listening to our packets)
+                    //This ICMP response then silently kind of half-closes our UdpClient connection....
+                    //Weirdly enough we can still continue sending data, but when we try to call UdpClient.Receive() it throws an exception --- EVEN IF THERE IS DATA WAITING IN THE BUFFER AT THAT VERY MOMENT.
+                    //Even weirdly-er, we can just ignore the exception and continue using the udpClient for sending and receiving...!
+
+                    //The current workaround simply catches the exception and ignores it :)
+                    //Unfortunately, the incoming packet that caused the exception is lost
+                }
+
             }
             udpClient.Close();
+                
         }
 #endif
 
